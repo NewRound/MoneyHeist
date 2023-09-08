@@ -4,25 +4,20 @@ using UnityEngine.InputSystem;
 
 public class InputKeyManager : MonoBehaviour
 {
-    public static InputKeyManager IM;
+    public static InputKeyManager I;
 
-    public event Action<Vector2> OnMoveEventHandller;
-    public event Action<InputValue> OnShootEventHandller;
-    public event Action OnShootDownEventHandller;
-    public event Action OnShootUpEventHandller;
-
-
-    public PlayerInput _input;
+    public event Action<Vector2> OnMoveEventHandller; // 방향키
+    public event Action<InputValue> OnShootEventHandller; // 스페이스바
 
     public InputKeyManager()
     {
-        if (IM != null)
+        if (I != null)
         {
             Destroy(this);
             return;
         }
 
-        IM = this;
+        I = this;
     }
 
     public void OnMove(InputValue value)
