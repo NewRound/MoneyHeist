@@ -8,39 +8,60 @@ using UnityEngine.TextCore.Text;
 
 public class ShopUIManager : MonoBehaviour
 {
-    public List<ShopUIData> ItemData;
+    public ShopUIData[] ItemList;
     public Image imagePrefab;
-    public Transform parentTransform;
+    public GameObject[] parentTransform;
 
+    int index =0;
     private void Start()
     {
-        for (int i = 0; i < ItemData.Count; i++)
+        int buffIndex = 0;
+        int skinIndex = 0;
+
+        foreach (var item in ItemList)
         {
-            float posY = +750-((i/3)*500);
-            float posX = ((i%3)*350)-350;
-            // 이미지 UI 요소 생성
-            Image imageUI = Instantiate(imagePrefab, parentTransform);
-
-            // 이미지 위치 설정
-            RectTransform rectTransform = imageUI.GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = new Vector2(posX, posY);
-
-            // 아이템 데이터로 UI 업데이트 (예: 이미지 스프라이트 설정)
-            Image[] childImages = imageUI.GetComponentsInChildren<Image>(); // 자식 오브젝트에서 모든 Image 컴포넌트 가져오기
-            foreach (Image childImage in childImages)
+            if (item.itemType == ItemType.Buff)
             {
-                if (childImage.name == "itemImage")
-                {
-                    childImage.sprite = ItemData[i].itemImage;
-                    break; // 이미지를 찾았으면 루프 종료
-                }
+                createItem(item, buffIndex, parentTransform[0].transform);
+                buffIndex++;
             }
-
-            TMP_Text childText = imageUI.GetComponentInChildren<TMP_Text>(); // 자식 오브젝트에서 text 컴포넌트 찾기
-            if (childText != null)
+            else if (item.itemType == ItemType.Skin)
             {
-                childText.text = ItemData[i].itemName; // itemName 변경
+                createItem(item, skinIndex, parentTransform[1].transform);
+                skinIndex++;
             }
         }
     }
+
+    private void createItem(ShopUIData ItemData, int i,Transform pos)
+    {
+                float posY = +750 - ((i / 3) * 500);
+                float posX = ((i % 3) * 350) - 350;
+                // 이미지 UI 요소 생성
+                Image imageUI = Instantiate(imagePrefab, pos);
+
+                // 이미지 위치 설정
+                RectTransform rectTransform = imageUI.GetComponent<RectTransform>();
+                rectTransform.anchoredPosition = new Vector2(posX, posY);
+
+                // 아이템 데이터로 UI 업데이트 (예: 이미지 스프라이트 설정)
+                Image[] childImages = imageUI.GetComponentsInChildren<Image>(); // 자식 오브젝트에서 모든 Image 컴포넌트 가져오기
+                foreach (Image childImage in childImages)
+                {
+                    if (childImage.name == "itemImage")
+                    {
+                        childImage.sprite = ItemData.itemImage;
+                        break; // 이미지를 찾았으면 루프 종료
+                    }
+                }
+
+                TMP_Text childText = imageUI.GetComponentInChildren<TMP_Text>(); // 자식 오브젝트에서 text 컴포넌트 찾기
+                if (childText != null)
+                {
+                    childText.text = ItemData.itemName; // itemName 변경
+                }
+        
+    }
 }
+
+
