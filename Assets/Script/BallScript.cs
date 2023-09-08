@@ -8,6 +8,6 @@ public class BallScript : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _rigidbody.AddForce(new Vector2(100,600));
+        //_rigidbody.AddForce(new Vector2(100,600));
     }
 }
