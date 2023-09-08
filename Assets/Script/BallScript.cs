@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,20 @@ using UnityEngine;
 public class BallScript : MonoBehaviour
 {
     Rigidbody2D _rigidbody;
+    SpriteRenderer _sprite;
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        //_rigidbody.AddForce(new Vector2(100,600));
+        _sprite = transform.Find("MainSprite").GetComponent<SpriteRenderer>();
+        Destroy(transform.Find("Line").gameObject);
+    }
+
+    private void Update()
+    {
+        Vector2 dir = Vector2.zero - _rigidbody.velocity.normalized;
+        float _rotZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, _rotZ);
+        _sprite.flipY = Mathf.Abs(_rotZ) > 90f;
+        _sprite.flipX = _sprite.flipY;
     }
 }

@@ -27,13 +27,11 @@ public class InputKeyManager : MonoBehaviour
 
     public void OnMove(InputValue value)
     {
-        Debug.Log("aaaasd");
         OnMoveEventHandller?.Invoke(value.Get<Vector2>());
     }
 
     public void OnShoot(InputValue value)
     {
-        Debug.Log("asd");
         OnShootEventHandller?.Invoke(value);
     }
 
