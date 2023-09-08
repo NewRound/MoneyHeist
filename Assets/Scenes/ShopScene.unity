@@ -1196,3 +1196,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2133357977
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2133357979}
+  - component: {fileID: 2133357978}
+  m_Layer: 0
+  m_Name: ShopUIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2133357978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133357977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee97dc89c9e6f2429c6c918cc5368ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemData:
+  - {fileID: 11400000, guid: 44ce282a0640a66469ef394d940735a5, type: 2}
+  - {fileID: 11400000, guid: c437e5df108d02b4ca33b19c65f39844, type: 2}
+  - {fileID: 11400000, guid: 110e794dca64d03428af64f2d6021992, type: 2}
+  - {fileID: 11400000, guid: 99af9586e4af4ee43a93b403651c65f3, type: 2}
+  - {fileID: 11400000, guid: 8efa43ffd7c86f54bb0f9f68c2e5db93, type: 2}
+  - {fileID: 11400000, guid: 098b3373de40fd746be0d651afa7f146, type: 2}
+  imagePrefab: {fileID: 48849544943154948, guid: 94ebd17b2fc17514d835e2ee471d2337, type: 3}
+  parentTransform: {fileID: 727486592}
+--- !u!4 &2133357979
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133357977}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 720, y: 1224.8276, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
