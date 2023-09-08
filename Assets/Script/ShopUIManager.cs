@@ -12,7 +12,6 @@ public class ShopUIManager : MonoBehaviour
     public Image imagePrefab;
     public GameObject[] parentTransform;
 
-    int index =0;
     private void Start()
     {
         int buffIndex = 0;
