@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject _ball;
     [SerializeField] GameObject _Paddle;
     [SerializeField] GameObject _block;
+
+    private Sprite[] blockImg = new Sprite[5];
+    [SerializeField] Sprite won0;
+    [SerializeField] Sprite won1;
+    [SerializeField] Sprite won2;
+    [SerializeField] Sprite won3;
+    [SerializeField] Sprite won4;
 
     private Vector2 _respawnPos; // 리스폰 위치 = 패들pos + _respawnPos
     private bool _isShootBall = false; // 발사하고나서 다 죽을때까지 true
@@ -30,6 +38,11 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _respawnPos = new Vector2(0, 0.5f);
+        blockImg[0] = won0;
+        blockImg[1] = won1;
+        blockImg[2] = won2;
+        blockImg[3] = won3;
+        blockImg[4] = won4;
     }
 
     public void GameStart() // 게임 시작& 재시작
@@ -48,7 +61,7 @@ public class GameManager : MonoBehaviour
             // 여기에 라이프 0일 경우 처리
         }
     }
-    public void SetBlockLevel(int level)
+    public void SetBlock(int level)
     {
         switch (level)
         {
@@ -79,11 +92,20 @@ public class GameManager : MonoBehaviour
                         count++;
                     }
 
-                    imageNum = SetBlock(imageNum);
-                    for(int i = 0; i < 50; i++)
+                    imageNum = imageNum.OrderBy(item => UnityEngine.Random.Range(-1.0f, 1.0f)).ToArray();
+
+                    for (int i = 0; i < 50; i++)
                     {
                         GameObject newBlock = Instantiate(_block);
+                        newBlock.transform.parent = GameObject.Find("BlockPar").transform;
 
+                        float x = (i % 5) * 0.84f - 1.68f;
+                        float y = 3.20f - (i / 5) * 0.54f;
+                        newBlock.transform.position = new Vector3 (x, y, 0);
+
+                        newBlock.transform.localScale = new Vector3(0.22f, 0.22f, 0f);
+
+                        newBlock.transform.GetComponent<SpriteRenderer>().sprite = blockImg[imageNum[i]];
                     }
                 }
                 break;
@@ -92,9 +114,5 @@ public class GameManager : MonoBehaviour
             case 2:
                 break;
         }
-    }
-    private int[] SetBlock(int[] array)
-    {
-        return array = array.OrderBy(item => Random.Range(-1.0f, 1.0f)).ToArray();
     }
 }
