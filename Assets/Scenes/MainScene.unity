@@ -1004,10 +1004,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3afd78aa00f3025469687c3c56567372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _respownPos: {fileID: 7293428749075702375}
   _ball: {fileID: 7727843369316465021, guid: 109b740a47fdb4f4883b7a9137ae5c34, type: 3}
   _Paddle: {fileID: 1405744323}
-  _ballScript: {fileID: 0}
 --- !u!114 &1657262398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1020,7 +1018,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe739d4ce4521824681ff44950a05902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _input: {fileID: 0}
 --- !u!114 &1657262399
 MonoBehaviour:
   m_ObjectHideFlags: 0
