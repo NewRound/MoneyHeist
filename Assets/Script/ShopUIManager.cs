@@ -10,9 +10,12 @@ public class ShopUIManager : MonoBehaviour
 {
     public ShopUIData[] ItemList;
     public Image imagePrefab;
-    public GameObject[] parentTransform;
+    public GameObject[] background;
+    public GameObject parentTransform;
+    public TMP_Text labelTxt;
 
-    int index =0;
+    private Animator anim;
+
     private void Start()
     {
         int buffIndex = 0;
@@ -22,15 +25,18 @@ public class ShopUIManager : MonoBehaviour
         {
             if (item.itemType == ItemType.Buff)
             {
-                createItem(item, buffIndex, parentTransform[0].transform);
+                createItem(item, buffIndex, background[0].transform);
                 buffIndex++;
             }
             else if (item.itemType == ItemType.Skin)
             {
-                createItem(item, skinIndex, parentTransform[1].transform);
+                createItem(item, skinIndex, background[1].transform);
                 skinIndex++;
             }
         }
+        labelTxt.text = "버프 아이템";
+
+        anim = parentTransform.GetComponent<Animator>();
     }
 
     private void createItem(ShopUIData ItemData, int i,Transform pos)
@@ -61,6 +67,36 @@ public class ShopUIManager : MonoBehaviour
                     childText.text = ItemData.itemName; // itemName 변경
                 }
         
+    }
+    
+    public void next()
+    {
+        parentTransform.SetActive(true);
+        StartCoroutine(ChangeList());
+        
+    }
+
+    public void prev()
+    {
+        parentTransform.SetActive(true);
+        StartCoroutine(ChangeList());
+    }
+    IEnumerator ChangeList()
+    {
+        // 애니메이션 재생 중 대기
+        yield return new WaitForSeconds(0.4f);
+        if (background[0].activeSelf)
+        {
+            labelTxt.text = "스킨 아이템";
+            background[0].SetActive(false);
+            background[1].SetActive(true);
+        }
+        else if (background[1].activeSelf)
+        {
+            labelTxt.text = "버프 아이템";
+            background[0].SetActive(true);
+            background[1].SetActive(false);
+        }      
     }
 }
 
