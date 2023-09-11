@@ -15,7 +15,7 @@ public class Block : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if(coll.gameObject.tag == "")
+        if(coll.gameObject.tag == "Ball")
         {
             if(hp > 0)
             {

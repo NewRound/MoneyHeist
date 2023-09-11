@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         blockArr[2] = won2;
         blockArr[3] = won3;
         blockArr[4] = won4;
-        SetBlock(2);
+        SetBlock(0);
     }
 
     public void GameStart() // 게임 시작& 재시작
@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
             // 여기에 라이프 0일 경우 처리
         }
     }
+    //고칠점...
     public void SetBlock(int level)
     {
         //level은 이후 개발에 따라 변경.(매개변수 자체를 없앨 수도.)
