@@ -32,6 +32,12 @@ public class PadScript : MonoBehaviour
     private void FixedUpdate()
     {
         Move(_direction);
+        SettingBall();
+
+    }
+
+    private void Update()
+    {
     }
 
     private void InputDirectionKey(Vector2 value)
@@ -39,35 +45,12 @@ public class PadScript : MonoBehaviour
         _direction = value;
     }
 
-    private void Update()
-    {
-        if (_isReady==true && GameManager.I.IsShootBall == false) 
-        {
-            if (_reverseRotation == false)
-            {
-                tagetBall.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.forward);
-                if (transform.eulerAngles.z >= 90)
-                {
-                    _reverseRotation = true;
-                }
-            }
-            if (_reverseRotation == true)
-            {
-                tagetBall.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.back);
-                if (transform.eulerAngles.z <= 10)
-                {
-                    _reverseRotation = false;
-                }
-            }
-        }
-    }
-
     private void Move(Vector2 value)
     {
         _rigidbody.velocity = _speed * Time.deltaTime * value;
     }
 
-    private void ShootBall(InputValue inputkey)
+    private void ShootBall(InputValue inputkey) // 슛 입력과 발사
     {
         if (GameManager.I.IsShootBall )
             return;
@@ -89,9 +72,31 @@ public class PadScript : MonoBehaviour
         {
             _isReady = true;
         }
-
-
     }
 
+    private void SettingBall() // 발사 각도 설정
+    {
+        if (_isReady == true && GameManager.I.IsShootBall == false)
+        {
+            if (_reverseRotation == false)
+            {
+                tagetBall.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.forward);
+                Debug.Log(tagetBall.transform.rotation.z);
+                if (tagetBall.transform.rotation.z >= 0.6)
+                {
+                      _reverseRotation = true;
+                }
+            }
+            else if (_reverseRotation == true)
+            {
+                tagetBall.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.back);
+                Debug.Log(tagetBall.transform.rotation.z);
+                if (tagetBall.transform.rotation.z <= -0.6)
+                {
+                    _reverseRotation = false;
+                }
+            }
+        }
+    }
 }
 
