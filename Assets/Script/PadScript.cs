@@ -7,8 +7,8 @@ using UnityEngine.InputSystem;
 public class PadScript : MonoBehaviour
 {
     [SerializeField] LineRenderer _lineRenderer;
-    GameObject tagetBall;
-    Rigidbody2D _rigidbody;
+    public BallScript tagetBall;
+    public Rigidbody2D _rigidbody;
 
     private Vector2 _direction;
     [SerializeField] float _speed = 150;
@@ -31,9 +31,13 @@ public class PadScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move(_direction);
-        SettingBall();
+        if (GameManager.I.IsShootBall == true)
+        {
+            Move(_direction);
+            return;
 
+        }
+        SettingBall();
     }
 
     private void Update()
@@ -55,18 +59,16 @@ public class PadScript : MonoBehaviour
         if (GameManager.I.IsShootBall )
             return;
 
-        tagetBall = transform.Find("Ball").gameObject;
+        tagetBall = BallManager.I.lastMakeBall;
 
         if (inputkey.isPressed == false)
         {
             GameManager.I.IsShootBall = true;
             _isReady = false;
-            tagetBall = transform.Find("Ball").gameObject;
-            tagetBall.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            tagetBall.transform.SetParent(null);
-            tagetBall.GetComponent<Rigidbody2D>().velocity = _shootPow*tagetBall.transform.up;
-            tagetBall.AddComponent<BallScript>();
-            tagetBall.GetComponent<BallScript>()._ballPow = tagetBall.GetComponent<Rigidbody2D>().velocity.magnitude;
+            tagetBall._line.SetActive(false);
+            tagetBall._rigidbody.bodyType = RigidbodyType2D.Dynamic;
+            tagetBall._rigidbody.velocity = _shootPow*tagetBall.transform.up;
+            tagetBall._ballPow = tagetBall._rigidbody.velocity.magnitude;
             return;
         }
         else if (inputkey.isPressed == true)
