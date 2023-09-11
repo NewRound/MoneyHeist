@@ -1605,9 +1605,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 44ce282a0640a66469ef394d940735a5, type: 2}
   - {fileID: 11400000, guid: c437e5df108d02b4ca33b19c65f39844, type: 2}
   - {fileID: 11400000, guid: 110e794dca64d03428af64f2d6021992, type: 2}
-  - {fileID: 11400000, guid: 99af9586e4af4ee43a93b403651c65f3, type: 2}
-  - {fileID: 11400000, guid: 8efa43ffd7c86f54bb0f9f68c2e5db93, type: 2}
-  - {fileID: 11400000, guid: 098b3373de40fd746be0d651afa7f146, type: 2}
   imagePrefab: {fileID: 48849544943154948, guid: 94ebd17b2fc17514d835e2ee471d2337, type: 3}
   background:
   - {fileID: 727486591}

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Item1 2
   m_EditorClassIdentifier: 
   itemType: 1
-  itemImage: {fileID: 21300000, guid: 37636ce6276d5fb41972b2da4df42cee, type: 3}
-  itemName: item1
+  itemImage: {fileID: 21300000, guid: 92a1c62a68e2d69468d8f56e3e93f18a, type: 3}
+  itemName: Ice Paddle
