@@ -13,7 +13,7 @@ public class PadScript : MonoBehaviour
     private Vector2 _direction;
     [SerializeField] float _speed = 150;
     [SerializeField] float _rotateSpd = 100;
-    [SerializeField] float _shootPow = 200;
+    public float _shootPow = 5;
 
     bool _isReady = false;
     bool _reverseRotation = false;
@@ -54,7 +54,7 @@ public class PadScript : MonoBehaviour
     {
         if (GameManager.I.IsShootBall )
             return;
-        
+
         tagetBall = transform.Find("Ball").gameObject;
 
         if (inputkey.isPressed == false)
@@ -64,11 +64,12 @@ public class PadScript : MonoBehaviour
             tagetBall = transform.Find("Ball").gameObject;
             tagetBall.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             tagetBall.transform.SetParent(null);
-            tagetBall.GetComponent<Rigidbody2D>().velocity = _shootPow*Time.deltaTime*tagetBall.transform.up;
+            tagetBall.GetComponent<Rigidbody2D>().velocity = _shootPow*tagetBall.transform.up;
             tagetBall.AddComponent<BallScript>();
+            tagetBall.GetComponent<BallScript>()._ballPow = tagetBall.GetComponent<Rigidbody2D>().velocity.magnitude;
             return;
         }
-        if (inputkey.isPressed == true)
+        else if (inputkey.isPressed == true)
         {
             _isReady = true;
         }
@@ -81,7 +82,6 @@ public class PadScript : MonoBehaviour
             if (_reverseRotation == false)
             {
                 tagetBall.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.forward);
-                Debug.Log(tagetBall.transform.rotation.z);
                 if (tagetBall.transform.rotation.z >= 0.6)
                 {
                       _reverseRotation = true;
@@ -90,7 +90,6 @@ public class PadScript : MonoBehaviour
             else if (_reverseRotation == true)
             {
                 tagetBall.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.back);
-                Debug.Log(tagetBall.transform.rotation.z);
                 if (tagetBall.transform.rotation.z <= -0.6)
                 {
                     _reverseRotation = false;
