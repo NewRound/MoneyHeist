@@ -9,14 +9,13 @@ public class GameManager : MonoBehaviour
     public static GameManager I;
     [SerializeField] GameObject _ball;
     [SerializeField] GameObject _Paddle;
-    [SerializeField] GameObject _block;
 
-    private Sprite[] blockImg = new Sprite[5];
-    [SerializeField] Sprite won0;
-    [SerializeField] Sprite won1;
-    [SerializeField] Sprite won2;
-    [SerializeField] Sprite won3;
-    [SerializeField] Sprite won4;
+    private GameObject[] blockArr = new GameObject[5];
+    [SerializeField] GameObject won0;
+    [SerializeField] GameObject won1;
+    [SerializeField] GameObject won2;
+    [SerializeField] GameObject won3;
+    [SerializeField] GameObject won4;
 
     private Vector2 _respawnPos; // 리스폰 위치 = 패들pos + _respawnPos
     private bool _isShootBall = false; // 발사하고나서 다 죽을때까지 true
@@ -38,11 +37,12 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _respawnPos = new Vector2(0, 0.5f);
-        blockImg[0] = won0;
-        blockImg[1] = won1;
-        blockImg[2] = won2;
-        blockImg[3] = won3;
-        blockImg[4] = won4;
+        blockArr[0] = won0;
+        blockArr[1] = won1;
+        blockArr[2] = won2;
+        blockArr[3] = won3;
+        blockArr[4] = won4;
+        SetBlock(2);
     }
 
     public void GameStart() // 게임 시작& 재시작
@@ -63,9 +63,94 @@ public class GameManager : MonoBehaviour
     }
     public void SetBlock(int level)
     {
+        //level은 이후 개발에 따라 변경.(매개변수 자체를 없앨 수도.)
         switch (level)
         {
             case 0:
+                //level = 1, blockCount == 30 (5 * 6)
+                //50000 * 5, 10000 * 10, 5000 * 5, 1000 * 10(임시)
+                {
+                    int count = 0;
+                    int[] imageNum = new int[50];
+                    while (count < 10)
+                    {
+                        imageNum[count] = 0;
+                        count++;
+                    }
+                    while (count < 15)
+                    {
+                        imageNum[count] = 1;
+                        count++;
+                    }
+                    while (count < 25)
+                    {
+                        imageNum[count] = 2;
+                        count++;
+                    }
+                    while (count < 30)
+                    {
+                        imageNum[count] = 3;
+                        count++;
+                    }
+
+                    imageNum = imageNum.OrderBy(item => UnityEngine.Random.Range(-1.0f, 1.0f)).ToArray();
+
+                    for (int i = 0; i < 30; i++)
+                    {
+                        GameObject newBlock = Instantiate(blockArr[imageNum[i]]);
+                        newBlock.transform.parent = GameObject.Find("BlockPar").transform;
+
+                        float x = (i % 5) * 0.84f - 1.68f;
+                        float y = 3.20f - (i / 5) * 0.54f;
+
+                        newBlock.transform.position = new Vector3(x, y, 0);
+                        newBlock.transform.localScale = new Vector3(0.22f, 0.22f, 0f);
+                    }
+                }
+                break;
+            case 1:
+                //level = 2, blockCount == 40(5 * 8)
+                //50000 * 10, 10000 * 20, 5000 * 6, 1000 * 4(임시)
+                {
+                    int count = 0;
+                    int[] imageNum = new int[40];
+                    while (count < 4)
+                    {
+                        imageNum[count] = 0;
+                        count++;
+                    }
+                    while (count < 10)
+                    {
+                        imageNum[count] = 1;
+                        count++;
+                    }
+                    while (count < 30)
+                    {
+                        imageNum[count] = 2;
+                        count++;
+                    }
+                    while (count < 40)
+                    {
+                        imageNum[count] = 3;
+                        count++;
+                    }
+
+                    imageNum = imageNum.OrderBy(item => UnityEngine.Random.Range(-1.0f, 1.0f)).ToArray();
+
+                    for (int i = 0; i < 40; i++)
+                    {
+                        GameObject newBlock = Instantiate(blockArr[imageNum[i]]);
+                        newBlock.transform.parent = GameObject.Find("BlockPar").transform;
+
+                        float x = (i % 5) * 0.84f - 1.68f;
+                        float y = 3.20f - (i / 5) * 0.54f;
+
+                        newBlock.transform.position = new Vector3(x, y, 0);
+                        newBlock.transform.localScale = new Vector3(0.22f, 0.22f, 0f);
+                    }
+                }
+                break;
+            case 2:
                 //level = 3, blockCount == 50
                 //50000 * 20, 10000 * 25, 5000 * 4, 1000 * 1(임시)
                 {
@@ -96,22 +181,16 @@ public class GameManager : MonoBehaviour
 
                     for (int i = 0; i < 50; i++)
                     {
-                        GameObject newBlock = Instantiate(_block);
+                        GameObject newBlock = Instantiate(blockArr[imageNum[i]]);
                         newBlock.transform.parent = GameObject.Find("BlockPar").transform;
 
                         float x = (i % 5) * 0.84f - 1.68f;
                         float y = 3.20f - (i / 5) * 0.54f;
-                        newBlock.transform.position = new Vector3 (x, y, 0);
 
+                        newBlock.transform.position = new Vector3(x, y, 0);
                         newBlock.transform.localScale = new Vector3(0.22f, 0.22f, 0f);
-
-                        newBlock.transform.GetComponent<SpriteRenderer>().sprite = blockImg[imageNum[i]];
                     }
                 }
-                break;
-            case 1:
-                break;
-            case 2:
                 break;
         }
     }
