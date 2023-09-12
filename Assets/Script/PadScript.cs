@@ -6,9 +6,10 @@ using UnityEngine.InputSystem;
 
 public class PadScript : MonoBehaviour
 {
-    [SerializeField] LineRenderer _lineRenderer;
-    GameObject tagetBall;
-    Rigidbody2D _rigidbody;
+    public BallScript tagetBall;
+    public Rigidbody2D _rigidbody;
+    public BoxCollider2D _boxCollider;
+    public GameObject _Arrow;
 
     private Vector2 _direction;
     [SerializeField] float _speed = 150;
@@ -18,26 +19,30 @@ public class PadScript : MonoBehaviour
     bool _isReady = false;
     bool _reverseRotation = false;
 
+    public float _size;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _size = _boxCollider.size.x * 0.5f;
     }
 
     private void Start()
     {
+        GameManager.I._paddle = this;
         InputKeyManager.I.OnMoveEventHandller += InputDirectionKey;
         InputKeyManager.I.OnShootEventHandller += ShootBall;
     }
 
     private void FixedUpdate()
     {
-        Move(_direction);
+        if (GameManager.I.IsShootBall == true)
+        {
+            Move(_direction);
+            return;
+
+        }
         SettingBall();
-
-    }
-
-    private void Update()
-    {
     }
 
     private void InputDirectionKey(Vector2 value)
@@ -48,6 +53,14 @@ public class PadScript : MonoBehaviour
     private void Move(Vector2 value)
     {
         _rigidbody.velocity = _speed * Time.deltaTime * value;
+        if (transform.position.x < -2.4f + _size && value.x <0)
+        {
+            _rigidbody.velocity = Vector3.zero;
+        }
+        else if (transform.position.x > 2.4f - _size && value.x > 0)
+        {
+            _rigidbody.velocity = Vector3.zero;
+        }
     }
 
     private void ShootBall(InputValue inputkey) // 슛 입력과 발사
@@ -55,18 +68,18 @@ public class PadScript : MonoBehaviour
         if (GameManager.I.IsShootBall )
             return;
 
-        tagetBall = transform.Find("Ball").gameObject;
+        tagetBall = BallManager.I.lastMakeBall;
 
         if (inputkey.isPressed == false)
         {
             GameManager.I.IsShootBall = true;
             _isReady = false;
-            tagetBall = transform.Find("Ball").gameObject;
-            tagetBall.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            tagetBall.transform.SetParent(null);
-            tagetBall.GetComponent<Rigidbody2D>().velocity = _shootPow*tagetBall.transform.up;
-            tagetBall.AddComponent<BallScript>();
-            tagetBall.GetComponent<BallScript>()._ballPow = tagetBall.GetComponent<Rigidbody2D>().velocity.magnitude;
+            tagetBall._rigidbody.bodyType = RigidbodyType2D.Dynamic;
+            tagetBall._rigidbody.velocity = _shootPow*tagetBall.transform.up;
+            tagetBall._ballShottingPow = tagetBall._rigidbody.velocity.magnitude;
+
+            _Arrow.transform.rotation = Quaternion.identity;
+            _Arrow.SetActive(false);
             return;
         }
         else if (inputkey.isPressed == true)
@@ -82,6 +95,7 @@ public class PadScript : MonoBehaviour
             if (_reverseRotation == false)
             {
                 tagetBall.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.forward);
+                _Arrow.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.forward);
                 if (tagetBall.transform.rotation.z >= 0.6)
                 {
                       _reverseRotation = true;
@@ -90,6 +104,7 @@ public class PadScript : MonoBehaviour
             else if (_reverseRotation == true)
             {
                 tagetBall.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.back);
+                _Arrow.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.back);
                 if (tagetBall.transform.rotation.z <= -0.6)
                 {
                     _reverseRotation = false;

@@ -1,35 +1,43 @@
 
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BallScript : MonoBehaviour
 {
-    Rigidbody2D _rigidbody;
-    SpriteRenderer _sprite;
-    GameObject _moneyBag;
-    public float _ballPow;
+    public Rigidbody2D _rigidbody;
+    public SpriteRenderer _sprite;
+    public TrailRenderer _trailRenderer;
+    public GameObject _moneyBag;
+    public float _ballShottingPow;
 
-    private void Start()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _sprite = transform.Find("MainSprite").GetComponent<SpriteRenderer>();
-        _moneyBag = transform.Find("MainSprite").Find("MoneyBag").gameObject;
-        Destroy(transform.Find("Line").gameObject);
-    }
+    public float _dmg = 1;
 
     private void FixedUpdate()
     {
+        if (GameManager.I.IsShootBall == false)
+            return;
+
         Vector2 dir = Vector2.zero - _rigidbody.velocity.normalized;
         float _rotZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, _rotZ + 90);
         _sprite.flipX = Mathf.Abs(_rotZ) > 90f;
 
-        if (transform.position.y < -5)
+        if (transform.position.y < -10)
         {
-            Destroy(gameObject);
-
-            if (GameObject.FindGameObjectsWithTag("Ball").Length == 1)
+            _trailRenderer.Clear();
+            _moneyBag.SetActive(false);
+            gameObject.SetActive(false);
+            List<BallScript> checkList = BallManager.I.balls;
+            for (int i = 0; i < checkList.Count; i++)
             {
-                GameManager.I.GameStart();
+                if (checkList[i].gameObject.activeSelf == true && checkList[i] != this)
+                    break;
+
+                if (i == checkList.Count-1)
+                {
+                    GameManager.I.GameStart();
+                }
             }
         }
     }
@@ -54,8 +62,7 @@ public class BallScript : MonoBehaviour
 
         Vector2 currentDir = _rigidbody.velocity.normalized;
         Vector2 NextDir = new Vector2(currentDir.x + rangeX, currentDir.y + rangeY);
-        _rigidbody.velocity = NextDir.normalized * _ballPow;
-        Debug.Log(_rigidbody.velocity.magnitude);
+        _rigidbody.velocity = NextDir.normalized * _ballShottingPow;
     }
 
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class StartSceneManager : MonoBehaviour
@@ -15,14 +16,8 @@ public class StartSceneManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void ChoiceLevel()
+    public void StartGame()
     {
-        string name = gameObject.name;
-        int level = name[6] - '0';
-
-        // 테스트용
-        PlayerPrefs.SetInt("Level", level);
-
         SceneManager.LoadScene("MainScene");
 
     }
