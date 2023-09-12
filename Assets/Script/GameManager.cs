@@ -26,10 +26,10 @@ public class GameManager : MonoBehaviour
     private Vector2 _ballRespawnPos; // 리스폰 위치 = 패들pos + _respawnPos
 
 
-    private float gameTime = 5.0f;
+    private float gameTime;
     public bool _isGaming = false;
     private bool _isShootBall = false; // 발사하고나서 다 죽을때까지 true
-    private int _life = 3; // 밸런스 수정하셔도됩니다!
+    private int _life; // 밸런스 수정하셔도됩니다!
     public bool IsShootBall { get { return _isShootBall; } set { _isShootBall = value; } }
 
     private void Awake()
@@ -46,9 +46,14 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _respawnPos = new Vector2(0, 0.5f);
-
+        Debug.Log("Start 실행");
         score = 0;
         maxScore = 0; // 임시
+        Time.timeScale = 1;
+        gameTime = 5.0f;
+        _life = 3;
+        _isGaming = false;
+        _isShootBall = false;
 
         _ballRespawnPos = _paddleRespawnPos + (Vector2.up * 0.5f);
         if(DataManager.DMinstance.selectedPaddleImage != null)paddleImage.sprite = DataManager.DMinstance.selectedPaddleImage;
@@ -71,7 +76,6 @@ public class GameManager : MonoBehaviour
         {
             _life = -1;
             // 게임 오버 처리
-            EndGame();
         }
     }
 
@@ -81,7 +85,7 @@ public class GameManager : MonoBehaviour
         {
             _isShootBall = false;
             _life--;
-
+            MainUIManager.I._lifetxt.text = _life.ToString();
 
             _paddle._Arrow.SetActive(true);
             _paddle.transform.position = _paddleRespawnPos;
