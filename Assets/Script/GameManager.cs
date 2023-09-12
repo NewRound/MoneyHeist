@@ -8,11 +8,16 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager I;
+    #region
     [SerializeField] GameObject EndGameUI;
+
+    private int maxScore;
+    private int totalScore;
+
+    #endregion
     [SerializeField] public GameObject _ball;
     [SerializeField] public PadScript _paddle;
     public SpriteRenderer paddleImage;
-
 
     private Vector2 _respawnPos; // 리스폰 위치 = 패들pos + _respawnPos
 
@@ -62,6 +67,12 @@ public class GameManager : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        
+    }
+
+
     public void GameStart() // 게임 시작& 재시작
     {
         if (_life >= 0)
@@ -84,6 +95,7 @@ public class GameManager : MonoBehaviour
         else
         {
             // 여기에 라이프 0일 경우 처리
+            EndGame();
         }
     }
     public void EndGame()

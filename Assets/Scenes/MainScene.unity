@@ -3155,7 +3155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3afd78aa00f3025469687c3c56567372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EndGameUI: {fileID: 0}
+  EndGameUI: {fileID: 93899034}
   _ball: {fileID: 7727843369316465021, guid: 109b740a47fdb4f4883b7a9137ae5c34, type: 3}
   _paddle: {fileID: 1405744326}
   paddleImage: {fileID: 1660649830}
