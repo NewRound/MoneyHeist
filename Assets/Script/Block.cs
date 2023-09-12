@@ -5,11 +5,23 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-    [SerializeField] int hp;
-    [SerializeField] int score;
-    [SerializeField] double dropPer;
+    //변경점(스크립터블 오브젝트)
+    public BlockData blockData;
 
-    //replace with teamate's variable
+    public int hp;
+    public int score;
+    public double dropPer;
+
+    private void Start()
+    {
+        hp = blockData.hp;
+        score = blockData.score;
+        dropPer = blockData.dropPer;
+
+        gameObject.GetComponent<SpriteRenderer>().sprite = blockData.blockImage;
+    }
+
+    //교체할 것.
     int playerScore = 0;
     
 
@@ -29,7 +41,15 @@ public class Block : MonoBehaviour
                 bool drop = Random.Range(0.0f, 1.0f) > (1 - dropPer);
                 if (drop == true)
                 {
-                    //Call dropItemFunc
+                    //Call dropItem
+
+                    //Set ItemPos
+
+                    //Item Drop
+
+                    //Item Release
+
+                    //Item Use
                 }
 
                 playerScore += score;
@@ -37,4 +57,6 @@ public class Block : MonoBehaviour
             }
         }
     }
+
+
 }
