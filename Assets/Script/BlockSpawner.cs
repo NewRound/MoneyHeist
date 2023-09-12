@@ -22,8 +22,6 @@ public class BlockSpawner : MonoBehaviour
         int level = DataManager.DMinstance.level;
         switch (level)
         {
-            case 0:
-                break;
             case 1:
                 //level = 1, blockCount == 30 (5 * 6)
                 //50000 * 5, 10000 * 10, 5000 * 5, 1000 * 10(юс╫ц)
@@ -137,7 +135,7 @@ public class BlockSpawner : MonoBehaviour
                     }
                 }
                 break;
-            }
+        }
         
     }
     public void SpawnBlock(int _typeNum , float _posX, float _posY, float size)

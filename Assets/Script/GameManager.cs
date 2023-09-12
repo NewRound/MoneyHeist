@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     #region UI
     [SerializeField] GameObject EndGameUI;
 
-    private int score;
+    public int score;
     private int maxScore;
     #endregion
 
