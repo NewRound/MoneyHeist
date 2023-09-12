@@ -7,7 +7,7 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager DMinstance;
 
-    int level;
+    public int level;
     public float paddleSpeed;
     public int ballDamage;
     public float ballSpeed;
@@ -38,9 +38,6 @@ public class DataManager : MonoBehaviour
     {
         string buttenName = EventSystem.current.currentSelectedGameObject.name;
         level = buttenName[6] - '0';
-
-        // 테스트용
-        PlayerPrefs.SetInt("Level", level);
     }
 
 }
