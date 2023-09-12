@@ -244,6 +244,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238251938}
   m_CullTransparentMesh: 1
+--- !u!1 &248332032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 248332034}
+  - component: {fileID: 248332033}
+  m_Layer: 0
+  m_Name: BlockSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &248332033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248332032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e898b8e7427f7744f8ada0d00619ce68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockDatas:
+  - {fileID: 11400000, guid: 6bfa6476e56cfe54eb6eb72a492f050c, type: 2}
+  - {fileID: 11400000, guid: 1f9cfa4a7614f5b42973923fe4488dec, type: 2}
+  - {fileID: 11400000, guid: 516dcc2aa25db774ba930af3dda19ba6, type: 2}
+  - {fileID: 11400000, guid: 69ca2555af71aad4e89066f28cd51bb0, type: 2}
+  - {fileID: 11400000, guid: 160b84b904de65841850c0f392acba69, type: 2}
+  blockPrefab: {fileID: 1230216853597472801, guid: 68316d4788064f944b341f297dc0ebf2, type: 3}
+--- !u!4 &248332034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248332032}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 720, y: 1480, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &285951891
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,13 +854,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagetBall: {fileID: 0}
+  _Arrow: {fileID: 1688909156}
   _rigidbody: {fileID: 0}
   _boxCollider: {fileID: 1405744325}
-  _Arrow: {fileID: 1688909156}
-  _speed: 150
-  _rotateSpd: 100
   _shootPow: 5
-  _size: 0
+  _paddleSpeed: 150
+  _rotateSpd: 100
+  _paddleSize: 0
 --- !u!50 &1405744327
 Rigidbody2D:
   serializedVersion: 4
@@ -1068,6 +1119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ball: {fileID: 7727843369316465021, guid: 109b740a47fdb4f4883b7a9137ae5c34, type: 3}
   _paddle: {fileID: 1405744326}
+  paddleImage: {fileID: 0}
   won0: {fileID: 7651520061420306795, guid: ace16bc4078a9b743b59726266f19c77, type: 3}
   won1: {fileID: 7651520061420306795, guid: 696e4c058b09f0540a5cf9350e70dfd5, type: 3}
   won2: {fileID: 7651520061420306795, guid: 6ce44e778c7351a42b14f52a93319cbd, type: 3}
