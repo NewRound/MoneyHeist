@@ -25,19 +25,19 @@ public class Block : MonoBehaviour
     int playerScore = 0;
     
 
-    private void OnTriggerEnter2D(Collider2D coll)
+    private void OnCollisionEnter2D(Collision2D coll)
     {
         if(coll.gameObject.tag == "Ball")
         {
-            if(hp > 0)
+            if(hp > 1)
             {
                 hp--;
             }
-            else        
+            else if(hp <= 1)
             {
-                //hp == 0
+                hp = 0;
 
-                //
+                //드랍 아이템
                 bool drop = Random.Range(0.0f, 1.0f) > (1 - dropPer);
                 if (drop == true)
                 {
@@ -53,7 +53,7 @@ public class Block : MonoBehaviour
                 }
 
                 playerScore += score;
-                Destroy(gameObject);
+                Destroy(gameObject, 1.0f);
             }
         }
     }
