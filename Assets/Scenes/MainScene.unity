@@ -418,7 +418,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 176500870}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1657262397}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: MoveToShopScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &176500870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1980,7 +1992,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 814525166}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1657262397}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Restart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &814525166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2785,7 +2809,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1351152817}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1657262397}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: MoveToStartScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1351152817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2922,6 +2958,7 @@ MonoBehaviour:
   _Arrow: {fileID: 1688909156}
   _rigidbody: {fileID: 0}
   _boxCollider: {fileID: 1405744325}
+  _spriteRenderer: {fileID: 1660649830}
   _shootPow: 5
   _paddleSpeed: 150
   _rotateSpd: 100
@@ -3121,6 +3158,7 @@ GameObject:
   - component: {fileID: 1657262398}
   - component: {fileID: 1657262399}
   - component: {fileID: 1657262400}
+  - component: {fileID: 1657262401}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3155,16 +3193,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3afd78aa00f3025469687c3c56567372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EndGameUI: {fileID: 0}
+  EndGameUI: {fileID: 93899034}
   _ball: {fileID: 7727843369316465021, guid: 109b740a47fdb4f4883b7a9137ae5c34, type: 3}
   _paddle: {fileID: 1405744326}
   paddleImage: {fileID: 1660649830}
-  won0: {fileID: 7651520061420306795, guid: ace16bc4078a9b743b59726266f19c77, type: 3}
-  won1: {fileID: 7651520061420306795, guid: 696e4c058b09f0540a5cf9350e70dfd5, type: 3}
-  won2: {fileID: 7651520061420306795, guid: 6ce44e778c7351a42b14f52a93319cbd, type: 3}
-  won3: {fileID: 7651520061420306795, guid: 65d0816765639244ca048a098df14f47, type: 3}
-  won4: {fileID: 7651520061420306795, guid: aa834bad51e54b54f9e7a4fba8167229, type: 3}
   _paddleRespawnPos: {x: 0, y: -3.96}
+  _isGaming: 0
 --- !u!114 &1657262398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3222,6 +3256,23 @@ MonoBehaviour:
   ball: {fileID: 7727843369316465021, guid: 109b740a47fdb4f4883b7a9137ae5c34, type: 3}
   balls: []
   lastMakeBall: {fileID: 0}
+--- !u!114 &1657262401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657262395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23b57b36b7018314e8ea62ec4719e4bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timetxt: {fileID: 1990134332}
+  _scoretxt: {fileID: 741188260}
+  _totaltxt: {fileID: 1315032874}
+  _maxtxt: {fileID: 1871574642}
+  _lifetxt: {fileID: 1998715675}
 --- !u!1 &1660649828
 GameObject:
   m_ObjectHideFlags: 0
@@ -3295,7 +3346,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 787ebdc26fbc1644a9682e17d2da7a13, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ce3a1a3c5595c724bb8599bdf50081f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

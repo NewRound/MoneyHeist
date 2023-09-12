@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -11,6 +12,7 @@ public class PadScript : MonoBehaviour
     public Rigidbody2D _rigidbody;
     public BoxCollider2D _boxCollider;
     public DataManager _dm = DataManager.DMinstance;
+    public SpriteRenderer _spriteRenderer;
 
     private Vector2 _direction;
     public float _shootPow;
@@ -57,6 +59,13 @@ public class PadScript : MonoBehaviour
     private void Move(Vector2 value)
     {
         _rigidbody.velocity = _paddleSpeed * Time.deltaTime * value;
+
+
+        if (value.x > 0)
+            _spriteRenderer.flipX = true;
+        else if (value.x < 0)
+            _spriteRenderer.flipX = false;
+
         if (transform.position.x < -2.4f + _paddleSize && value.x < 0)
         {
             _rigidbody.velocity = Vector3.zero;
@@ -67,7 +76,7 @@ public class PadScript : MonoBehaviour
         }
     }
 
-    // ½¸ ÀÔ·Â°ú ¹ß»ç
+    // ìŠ› ìž…ë ¥ê³¼ ë°œì‚¬
     private void ShootBall(InputValue inputkey)
     {
         if (GameManager.I.IsShootBall)
@@ -89,11 +98,12 @@ public class PadScript : MonoBehaviour
         }
         else if (inputkey.isPressed == true)
         {
+            GameManager.I._isGaming = true;
             _isReady = true;
         }
     }
 
-    // ¹ß»ç °¢µµ ¼³Á¤
+    // ë°œì‚¬ ê°ë„ ì„¤ì •
     private void SettingBall()
     {
         if (_isReady == true && GameManager.I.IsShootBall == false)
