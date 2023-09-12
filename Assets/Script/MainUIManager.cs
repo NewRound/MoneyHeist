@@ -14,5 +14,7 @@ public class MainUIManager : MonoBehaviour
     }
 
     public TextMeshProUGUI _timetxt;
-
+    public TextMeshProUGUI _scoretxt;
+    public TextMeshProUGUI _totaltxt;
+    public TextMeshProUGUI _maxtxt;
 }

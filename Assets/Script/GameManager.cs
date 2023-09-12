@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,9 +13,8 @@ public class GameManager : MonoBehaviour
     #region
     [SerializeField] GameObject EndGameUI;
 
+    private int score;
     private int maxScore;
-    private int totalScore;
-
     #endregion
     [SerializeField] public GameObject _ball;
     [SerializeField] public PadScript _paddle;
@@ -45,9 +45,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-
         _respawnPos = new Vector2(0, 0.5f);
 
+        score = 0;
+        maxScore = 0; // 임시
 
         _ballRespawnPos = _paddleRespawnPos + (Vector2.up * 0.5f);
         if(DataManager.DMinstance.selectedPaddleImage != null)paddleImage.sprite = DataManager.DMinstance.selectedPaddleImage;
@@ -63,12 +64,14 @@ public class GameManager : MonoBehaviour
             if (gameTime < 0)
                 gameTime = 0;
 
+            MainUIManager.I._scoretxt.text = score.ToString();
             MainUIManager.I._timetxt.text = gameTime.ToString("N2");
         }
         else if (gameTime < 0)
         {
             _life = -1;
             // 게임 오버 처리
+            EndGame();
         }
     }
 
@@ -100,11 +103,22 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         // 시간 멈춤
+        Time.timeScale = 0;
 
         // 종료 UI 부르기.
         EndGameUI.SetActive(true);
 
         // 점수 계산해서 넣어주기.
+
+
+    }
+
+    // 일시정지
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        EndGameUI.SetActive(true);
+        // 다시 시작
     }
 
     // 다시하기 (씬 로드)
