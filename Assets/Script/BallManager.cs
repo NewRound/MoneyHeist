@@ -46,10 +46,8 @@ public class BallManager : MonoBehaviour
             {
                 maxPosY = balls[i].transform.position.y;
                 ballIndex = i;
-                break;
+                continue;
             }
-
-
         }
 
         lastMakeBall.transform.position = balls[ballIndex].transform.position;

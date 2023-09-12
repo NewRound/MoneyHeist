@@ -7,8 +7,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager I;
-    [SerializeField] public GameObject _ball;
-    [SerializeField] public PadScript _paddle;
+    public GameObject _ballPrefab;
+    public PadScript _paddle;
 
     private GameObject[] blockArr = new GameObject[5];
     [SerializeField] GameObject won0;

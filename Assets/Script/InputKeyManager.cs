@@ -30,7 +30,8 @@ public class InputKeyManager : MonoBehaviour
         OnShootEventHandller?.Invoke(value);
     }
 
-    public void OnDebugKeyF()
+    // 디버그 해보고싶은 것들은 여기에 넣어서 사용해보세요 F키임
+    public void OnDebugKeyF() 
     {
         BallManager.I.DivideBall();
     }

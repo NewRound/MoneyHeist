@@ -10,8 +10,8 @@ public class BallScript : MonoBehaviour
     public SpriteRenderer _sprite;
     public TrailRenderer _trailRenderer;
     public GameObject _moneyBag;
-    public float _ballShottingPow;
 
+    public float _ballShottingPow;
     public float _dmg = 1;
 
     private void FixedUpdate()
@@ -19,28 +19,8 @@ public class BallScript : MonoBehaviour
         if (GameManager.I.IsShootBall == false)
             return;
 
-        Vector2 dir = Vector2.zero - _rigidbody.velocity.normalized;
-        float _rotZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, _rotZ + 90);
-        _sprite.flipX = Mathf.Abs(_rotZ) > 90f;
-
-        if (transform.position.y < -10)
-        {
-            _trailRenderer.Clear();
-            _moneyBag.SetActive(false);
-            gameObject.SetActive(false);
-            List<BallScript> checkList = BallManager.I.balls;
-            for (int i = 0; i < checkList.Count; i++)
-            {
-                if (checkList[i].gameObject.activeSelf == true && checkList[i] != this)
-                    break;
-
-                if (i == checkList.Count-1)
-                {
-                    GameManager.I.GameStart();
-                }
-            }
-        }
+        RotateSprite();
+        DeathCheck();
     }
 
     private void OnCollisionEnter2D(Collision2D coll)
@@ -71,6 +51,36 @@ public class BallScript : MonoBehaviour
         if (coll.gameObject.tag == "Item")
         {
             // 여기서 어떤 아이템을 먹었는지 처리
+        }
+    }
+
+    private void RotateSprite()
+    {
+        Vector2 dir = Vector2.zero - _rigidbody.velocity.normalized;
+        float _rotZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, _rotZ + 90);
+        _sprite.flipX = Mathf.Abs(_rotZ) > 90f;
+    }
+
+    private void DeathCheck()
+    {
+        if (transform.position.y > -10)
+            return;
+
+        _trailRenderer.Clear();
+        _moneyBag.SetActive(false);
+        gameObject.SetActive(false);
+        List<BallScript> checkList = BallManager.I.balls;
+
+        for (int i = 0; i < checkList.Count; i++)
+        {
+            if (checkList[i].gameObject.activeSelf == true && checkList[i] != this)
+                break;
+
+            if (i == checkList.Count - 1)
+            {
+                GameManager.I.GameStart();
+            }
         }
     }
 

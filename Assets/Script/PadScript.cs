@@ -7,24 +7,24 @@ using UnityEngine.InputSystem;
 public class PadScript : MonoBehaviour
 {
     public BallScript tagetBall;
+    public GameObject _Arrow;
     public Rigidbody2D _rigidbody;
     public BoxCollider2D _boxCollider;
-    public GameObject _Arrow;
 
     private Vector2 _direction;
-    [SerializeField] float _speed = 150;
-    [SerializeField] float _rotateSpd = 100;
     public float _shootPow = 5;
+    [SerializeField] float _paddleSpeed = 150;
+    [SerializeField] float _rotateSpd = 100;
 
     bool _isReady = false;
     bool _reverseRotation = false;
 
-    public float _size;
+    public float _paddleSize;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _size = _boxCollider.size.x * 0.5f;
+        _paddleSize = _boxCollider.size.x * 0.5f;
     }
 
     private void Start()
@@ -52,20 +52,21 @@ public class PadScript : MonoBehaviour
 
     private void Move(Vector2 value)
     {
-        _rigidbody.velocity = _speed * Time.deltaTime * value;
-        if (transform.position.x < -2.4f + _size && value.x <0)
+        _rigidbody.velocity = _paddleSpeed * Time.deltaTime * value;
+        if (transform.position.x < -2.4f + _paddleSize && value.x < 0)
         {
             _rigidbody.velocity = Vector3.zero;
         }
-        else if (transform.position.x > 2.4f - _size && value.x > 0)
+        else if (transform.position.x > 2.4f - _paddleSize && value.x > 0)
         {
             _rigidbody.velocity = Vector3.zero;
         }
     }
 
-    private void ShootBall(InputValue inputkey) // 슛 입력과 발사
+    // 슛 입력과 발사
+    private void ShootBall(InputValue inputkey)
     {
-        if (GameManager.I.IsShootBall )
+        if (GameManager.I.IsShootBall)
             return;
 
         tagetBall = BallManager.I.lastMakeBall;
@@ -75,7 +76,7 @@ public class PadScript : MonoBehaviour
             GameManager.I.IsShootBall = true;
             _isReady = false;
             tagetBall._rigidbody.bodyType = RigidbodyType2D.Dynamic;
-            tagetBall._rigidbody.velocity = _shootPow*tagetBall.transform.up;
+            tagetBall._rigidbody.velocity = _shootPow * tagetBall.transform.up;
             tagetBall._ballShottingPow = tagetBall._rigidbody.velocity.magnitude;
 
             _Arrow.transform.rotation = Quaternion.identity;
@@ -88,7 +89,8 @@ public class PadScript : MonoBehaviour
         }
     }
 
-    private void SettingBall() // 발사 각도 설정
+    // 발사 각도 설정
+    private void SettingBall()
     {
         if (_isReady == true && GameManager.I.IsShootBall == false)
         {
@@ -98,7 +100,7 @@ public class PadScript : MonoBehaviour
                 _Arrow.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.forward);
                 if (tagetBall.transform.rotation.z >= 0.6)
                 {
-                      _reverseRotation = true;
+                    _reverseRotation = true;
                 }
             }
             else if (_reverseRotation == true)
