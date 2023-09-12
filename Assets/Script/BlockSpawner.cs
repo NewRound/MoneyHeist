@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,15 +19,18 @@ public class BlockSpawner : MonoBehaviour
     {
         //언제 호출되는지 몰라 오류 발생 가능성도 있음.
         //근데 아마도 이 오브젝트가 씬에 등장할 때(메인씬으로 이동했을 때) 호출 될 듯.
+        //int stage = DataManager.DMinstance.level;
         int level = PlayerPrefs.GetInt("Level");
         switch (level)
         {
             case 0:
+                break;
+            case 1:
                 //level = 1, blockCount == 30 (5 * 6)
                 //50000 * 5, 10000 * 10, 5000 * 5, 1000 * 10(임시)
                 {
                     int count = 0;
-                    int[] blockNum = new int[50];
+                    int[] blockNum = new int[30];
                     while (count < 10)
                     {
                         blockNum[count] = 0;
@@ -58,7 +62,7 @@ public class BlockSpawner : MonoBehaviour
                     }
                 }
                 break;
-            case 1:
+            case 2:
                 //level = 2, blockCount == 40(5 * 8)
                 //50000 * 10, 10000 * 20, 5000 * 6, 1000 * 4(임시)
                 {
@@ -96,7 +100,7 @@ public class BlockSpawner : MonoBehaviour
                     }
                 }
                 break;
-            case 2:
+            case 3:
                 //level = 3, blockCount == 50
                 //50000 * 20, 10000 * 25, 5000 * 4, 1000 * 1(임시)
                 {
