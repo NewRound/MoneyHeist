@@ -19,8 +19,7 @@ public class BlockSpawner : MonoBehaviour
     {
         //언제 호출되는지 몰라 오류 발생 가능성도 있음.
         //근데 아마도 이 오브젝트가 씬에 등장할 때(메인씬으로 이동했을 때) 호출 될 듯.
-        //int stage = DataManager.DMinstance.level;
-        int level = PlayerPrefs.GetInt("Level");
+        int level = DataManager.DMinstance.level;
         switch (level)
         {
             case 0:
