@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] public PadScript _paddle;
     public SpriteRenderer paddleImage;
 
+
+    private Vector2 _respawnPos; // ë¦¬ìŠ¤í° ìœ„ì¹˜ = íŒ¨ë“¤pos + _respawnPos
+
     private GameObject[] blockArr = new GameObject[5];
     [SerializeField] GameObject won0;
     [SerializeField] GameObject won1;
@@ -19,9 +22,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject won4;
 
     [SerializeField] private Vector2 _paddleRespawnPos;
-    private Vector2 _ballRespawnPos; // ¸®½ºÆù À§Ä¡ = ÆĞµépos + _respawnPos
-    private bool _isShootBall = false; // ¹ß»çÇÏ°í³ª¼­ ´Ù Á×À»¶§±îÁö true
-    private int _life = 3; // ¹ë·±½º ¼öÁ¤ÇÏ¼ÅµµµË´Ï´Ù!
+    private Vector2 _ballRespawnPos; // ë¦¬ìŠ¤í° ìœ„ì¹˜ = íŒ¨ë“¤pos + _respawnPos
+
+    private bool _isShootBall = false; // ë°œì‚¬í•˜ê³ ë‚˜ì„œ ë‹¤ ì£½ì„ë•Œê¹Œì§€ true
+    private int _life = 3; // ë°¸ëŸ°ìŠ¤ ìˆ˜ì •í•˜ì…”ë„ë©ë‹ˆë‹¤!
 
     public bool IsShootBall { get { return _isShootBall; } set { _isShootBall = value; } }
 
@@ -32,26 +36,31 @@ public class GameManager : MonoBehaviour
             Destroy(this);
             return;
         }
-
+        
         I = this;
     }
 
     private void Start()
     {
-        blockArr[0] = won0;
-        blockArr[1] = won1;
-        blockArr[2] = won2;
-        blockArr[3] = won3;
-        blockArr[4] = won4;
+
+        _respawnPos = new Vector2(0, 0.5f);
+        //blockArr[0] = won0;
+        //blockArr[1] = won1;
+        //blockArr[2] = won2;
+        //blockArr[3] = won3;
+        //blockArr[4] = won4;
+        //SetBlock(PlayerPrefs.GetInt("Level"));
+
 
         _ballRespawnPos = _paddleRespawnPos + (Vector2.up * 0.5f);
         if(DataManager.DMinstance.selectedPaddleImage != null)paddleImage.sprite = DataManager.DMinstance.selectedPaddleImage;
 
         SetBlock(0);
         GameStart();
+
     }
 
-    public void GameStart() // °ÔÀÓ ½ÃÀÛ& Àç½ÃÀÛ
+    public void GameStart() // ê²Œì„ ì‹œì‘& ì¬ì‹œì‘
     {
         if (_life >= 0)
         {
@@ -72,148 +81,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // ¿©±â¿¡ ¶óÀÌÇÁ 0ÀÏ °æ¿ì Ã³¸®
+            // ì—¬ê¸°ì— ë¼ì´í”„ 0ì¼ ê²½ìš° ì²˜ë¦¬
         }
-    }
-    //°íÄ¥Á¡...
-    public void SetBlock(int level)
-    {
-        //levelÀº ÀÌÈÄ °³¹ß¿¡ µû¶ó º¯°æ.(¸Å°³º¯¼ö ÀÚÃ¼¸¦ ¾ø¾Ù ¼öµµ.)
-        switch (level)
-        {
-            case 0:
-                //level = 1, blockCount == 30 (5 * 6)
-                //50000 * 5, 10000 * 10, 5000 * 5, 1000 * 10(ÀÓ½Ã)
-                {
-                    int count = 0;
-                    int[] imageNum = new int[50];
-                    while (count < 10)
-                    {
-                        imageNum[count] = 0;
-                        count++;
-                    }
-                    while (count < 15)
-                    {
-                        imageNum[count] = 1;
-                        count++;
-                    }
-                    while (count < 25)
-                    {
-                        imageNum[count] = 2;
-                        count++;
-                    }
-                    while (count < 30)
-                    {
-                        imageNum[count] = 3;
-                        count++;
-                    }
-
-                    imageNum = imageNum.OrderBy(item => UnityEngine.Random.Range(-1.0f, 1.0f)).ToArray();
-
-                    for (int i = 0; i < 30; i++)
-                    {
-                        GameObject newBlock = Instantiate(blockArr[imageNum[i]]);
-                        newBlock.transform.parent = GameObject.Find("BlockPar").transform;
-
-                        float x = (i % 5) * 0.84f - 1.68f;
-                        float y = 3.20f - (i / 5) * 0.54f;
-
-                        newBlock.transform.position = new Vector3(x, y, 0);
-                        newBlock.transform.localScale = new Vector3(0.22f, 0.22f, 0f);
-                    }
-                }
-                break;
-            case 1:
-                //level = 2, blockCount == 40(5 * 8)
-                //50000 * 10, 10000 * 20, 5000 * 6, 1000 * 4(ÀÓ½Ã)
-                {
-                    int count = 0;
-                    int[] imageNum = new int[40];
-                    while (count < 4)
-                    {
-                        imageNum[count] = 0;
-                        count++;
-                    }
-                    while (count < 10)
-                    {
-                        imageNum[count] = 1;
-                        count++;
-                    }
-                    while (count < 30)
-                    {
-                        imageNum[count] = 2;
-                        count++;
-                    }
-                    while (count < 40)
-                    {
-                        imageNum[count] = 3;
-                        count++;
-                    }
-
-                    imageNum = imageNum.OrderBy(item => UnityEngine.Random.Range(-1.0f, 1.0f)).ToArray();
-
-                    for (int i = 0; i < 40; i++)
-                    {
-                        GameObject newBlock = Instantiate(blockArr[imageNum[i]]);
-                        newBlock.transform.parent = GameObject.Find("BlockPar").transform;
-
-                        float x = (i % 5) * 0.84f - 1.68f;
-                        float y = 3.20f - (i / 5) * 0.54f;
-
-                        newBlock.transform.position = new Vector3(x, y, 0);
-                        newBlock.transform.localScale = new Vector3(0.22f, 0.22f, 0f);
-                    }
-                }
-                break;
-            case 2:
-                //level = 3, blockCount == 50
-                //50000 * 20, 10000 * 25, 5000 * 4, 1000 * 1(ÀÓ½Ã)
-                {
-                    int count = 0;
-                    int[] imageNum = new int[50];
-                    while (count < 1)
-                    {
-                        imageNum[count] = 0;
-                        count++;
-                    }
-                    while (count < 5)
-                    {
-                        imageNum[count] = 1;
-                        count++;
-                    }
-                    while (count < 30)
-                    {
-                        imageNum[count] = 2;
-                        count++;
-                    }
-                    while (count < 50)
-                    {
-                        imageNum[count] = 3;
-                        count++;
-                    }
-
-                    imageNum = imageNum.OrderBy(item => UnityEngine.Random.Range(-1.0f, 1.0f)).ToArray();
-
-                    for (int i = 0; i < 50; i++)
-                    {
-                        GameObject newBlock = Instantiate(blockArr[imageNum[i]]);
-                        newBlock.transform.parent = GameObject.Find("BlockPar").transform;
-
-                        float x = (i % 5) * 0.84f - 1.68f;
-                        float y = 3.20f - (i / 5) * 0.54f;
-
-                        newBlock.transform.position = new Vector3(x, y, 0);
-                        newBlock.transform.localScale = new Vector3(0.22f, 0.22f, 0f);
-                    }
-                }
-                break;
-        }
-    }
-
-    public void EndGame()
-    {
-        // Á¾·áÈ­¸é. (UI È°¼ºÈ­)
-        // ´Ù½ÃÇÏ±â. (¾À ·Îµå È°¿ë)
-        // ½ÃÀÛÈ­¸é.
     }
 }
