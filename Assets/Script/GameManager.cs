@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager I;
+    [SerializeField] GameObject EndGameUI;
     [SerializeField] public GameObject _ball;
     [SerializeField] public PadScript _paddle;
     public SpriteRenderer paddleImage;
