@@ -1,4 +1,5 @@
 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,9 +7,11 @@ public class BallScript : MonoBehaviour
 {
     public Rigidbody2D _rigidbody;
     public SpriteRenderer _sprite;
+    public TrailRenderer _trailRenderer;
     public GameObject _moneyBag;
-    public GameObject _line;
-    public float _ballPow;
+    public float _ballShottingPow;
+
+    public float _dmg = 1;
 
     private void FixedUpdate()
     {
@@ -22,14 +25,19 @@ public class BallScript : MonoBehaviour
 
         if (transform.position.y < -10)
         {
+            _trailRenderer.Clear();
+            _moneyBag.SetActive(false);
             gameObject.SetActive(false);
             List<BallScript> checkList = BallManager.I.balls;
             for (int i = 0; i < checkList.Count; i++)
             {
-                if (checkList[i].enabled == true && checkList[i] != this)
+                if (checkList[i].gameObject.activeSelf == true && checkList[i] != this)
                     break;
 
-                GameManager.I.GameStart();
+                if (i == checkList.Count-1)
+                {
+                    GameManager.I.GameStart();
+                }
             }
         }
     }
@@ -54,6 +62,7 @@ public class BallScript : MonoBehaviour
 
         Vector2 currentDir = _rigidbody.velocity.normalized;
         Vector2 NextDir = new Vector2(currentDir.x + rangeX, currentDir.y + rangeY);
-        _rigidbody.velocity = NextDir.normalized * _ballPow;
+        _rigidbody.velocity = NextDir.normalized * _ballShottingPow;
     }
+
 }

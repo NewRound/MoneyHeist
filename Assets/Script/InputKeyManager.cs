@@ -30,4 +30,9 @@ public class InputKeyManager : MonoBehaviour
         OnShootEventHandller?.Invoke(value);
     }
 
+    public void OnDebugKeyF()
+    {
+        BallManager.I.DivideBall();
+    }
+
 }

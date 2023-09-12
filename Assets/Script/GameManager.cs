@@ -57,13 +57,13 @@ public class GameManager : MonoBehaviour
             _life--;
 
             _paddle.transform.position = _paddleRespawnPos;
+            _paddle._rigidbody.velocity = Vector2.zero;
+
             BallManager.I.MakeBall();
             BallScript newBall = BallManager.I.lastMakeBall;
-            _paddle._rigidbody.velocity = Vector2.zero;
+
             newBall.transform.position = _ballRespawnPos;
             newBall.transform.rotation = Quaternion.identity;
-            newBall._line.SetActive(true);
-            newBall._moneyBag.SetActive(false);
             newBall._rigidbody.isKinematic = true;
         }
         else
