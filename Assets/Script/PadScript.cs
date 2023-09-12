@@ -85,6 +85,7 @@ public class PadScript : MonoBehaviour
         }
         else if (inputkey.isPressed == true)
         {
+            GameManager.I._isGaming = true;
             _isReady = true;
         }
     }
