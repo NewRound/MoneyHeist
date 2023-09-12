@@ -12,6 +12,7 @@ public class StartSceneManager : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1.0f;
         startCanvas.SetActive(true);
         levelCanvas.SetActive(false);
         setCanvas.SetActive(false);
