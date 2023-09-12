@@ -84,4 +84,5 @@ public class GameManager : MonoBehaviour
             // 여기에 라이프 0일 경우 처리
         }
     }
+    
 }
