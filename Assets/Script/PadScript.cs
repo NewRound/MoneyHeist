@@ -10,6 +10,7 @@ public class PadScript : MonoBehaviour
     public GameObject _Arrow;
     public Rigidbody2D _rigidbody;
     public BoxCollider2D _boxCollider;
+    public SpriteRenderer _spriteRenderer;
 
     private Vector2 _direction;
     public float _shootPow = 5;
@@ -53,6 +54,10 @@ public class PadScript : MonoBehaviour
     private void Move(Vector2 value)
     {
         _rigidbody.velocity = _paddleSpeed * Time.deltaTime * value;
+
+
+        _spriteRenderer.flipX = value.x < 0;
+        
         if (transform.position.x < -2.4f + _paddleSize && value.x < 0)
         {
             _rigidbody.velocity = Vector3.zero;
