@@ -13,6 +13,10 @@ public class BallScript : MonoBehaviour
 
     public float _dmg = 1;
 
+    private void Start()
+    {
+        if(DataManager.DMinstance.selectedballImage != null)_sprite.sprite = DataManager.DMinstance.selectedballImage;
+    }
     private void FixedUpdate()
     {
         if (GameManager.I.IsShootBall == false)

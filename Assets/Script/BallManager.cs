@@ -29,7 +29,7 @@ public class BallManager : MonoBehaviour
             }
         }
 
-        lastMakeBall = Instantiate(ball).GetComponent<BallScript>();
+        lastMakeBall = Instantiate(ball).GetComponentInChildren<BallScript>();
         lastMakeBall.name = "Ball";
         balls.Add(lastMakeBall);
     }

@@ -5,12 +5,15 @@ using UnityEngine.EventSystems;
 
 public class DataManager : MonoBehaviour
 {
-    private static DataManager DMinstance;
+    public static DataManager DMinstance;
 
     int level;
     int lenght;
     int ballCount;
     int ballSpeed;
+
+    public Sprite selectedPaddleImage;
+    public Sprite selectedballImage;
 
 
     private void Awake()

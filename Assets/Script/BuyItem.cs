@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class BuyItem : MonoBehaviour
 {
+    public Image buttonImage;
     public Image itemImage;
     public GameObject checkImage;
     public bool isItemDark = false;
@@ -17,15 +18,17 @@ public class BuyItem : MonoBehaviour
         // 현재 아이템이 볼 아이템인 경우
          if (itemType == ItemType.Ball)
         {
-            BuyItemBtn(0);
+            selectItem(0);
+            DataManager.DMinstance.selectedballImage = selectedItem[0].itemImage.sprite;
         } 
          // 현재 아이템이 paddle 아이템인 경우
         else if (itemType == ItemType.Paddle)
         {
-            BuyItemBtn(1);
+            selectItem(1);
+            DataManager.DMinstance.selectedPaddleImage = selectedItem[1].itemImage.sprite;
         }
     }
-    public void BuyItemBtn(int num)
+    public void selectItem(int num)
     {
         if (selectedItem[num] != null && selectedItem[num] != this)
         {
@@ -35,7 +38,7 @@ public class BuyItem : MonoBehaviour
         // 아이템 어두운 상태에 따라 이미지 색상을 조절
         if (!isItemDark)
         {
-            itemImage.color = Color.gray; // 아이템을 어둡게 표현
+            buttonImage.color = Color.gray; // 아이템을 어둡게 표현
             isItemDark = true;
             checkImage.SetActive(true);
             selectedItem[num] = this;

@@ -169,7 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eedb03103a9adde4cbe0f490bdf66475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 48849544943154948}
+  buttonImage: {fileID: 48849544943154948}
+  itemImage: {fileID: 6232398841496153665}
   checkImage: {fileID: 203941913953071846}
   isItemDark: 0
   itemType: 0
