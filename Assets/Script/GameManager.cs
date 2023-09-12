@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         maxScore = 0; // 임시
         Time.timeScale = 1;
         gameTime = 5.0f;
-        _life = 3;
+        _life = 4;
         _isGaming = false;
         _isShootBall = false;
 
@@ -75,11 +75,11 @@ public class GameManager : MonoBehaviour
 
     public void GameStart() // 게임 시작& 재시작
     {
-        if (_life >= 0 && gameTime >0)
+        if (_life > 0 && gameTime >0)
         {
             _isShootBall = false;
             _life--;
-            //MainUIManager.I._lifetxt.text = _life.ToString();
+            MainUIManager.I._lifetxt.text = _life.ToString();
 
             _paddle._Arrow.SetActive(true);
             _paddle.transform.position = _paddleRespawnPos;
