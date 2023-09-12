@@ -34,12 +34,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (I != null)
-        {
-            Destroy(this);
-            return;
-        }
-        
         I = this;
     }
 
@@ -85,7 +79,7 @@ public class GameManager : MonoBehaviour
         {
             _isShootBall = false;
             _life--;
-            MainUIManager.I._lifetxt.text = _life.ToString();
+            //MainUIManager.I._lifetxt.text = _life.ToString();
 
             _paddle._Arrow.SetActive(true);
             _paddle.transform.position = _paddleRespawnPos;

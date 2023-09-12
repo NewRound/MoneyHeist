@@ -11,12 +11,6 @@ public class InputKeyManager : MonoBehaviour
 
     public InputKeyManager()
     {
-        if (I != null)
-        {
-            Destroy(this);
-            return;
-        }
-
         I = this;
     }
 
