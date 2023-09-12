@@ -28,7 +28,6 @@ public class PadScript : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _paddleSize = _boxCollider.size.x * 0.5f;
-       
     }
 
     private void Start()
@@ -82,11 +81,12 @@ public class PadScript : MonoBehaviour
         if (GameManager.I.IsShootBall)
             return;
 
-        tagetBall = BallManager.I.lastMakeBall;
+        tagetBall = BallManager.I._lastMakeBall;
 
         if (inputkey.isPressed == false)
         {
             GameManager.I.IsShootBall = true;
+            GameManager.I._isGaming = true;
             _isReady = false;
             tagetBall._rigidbody.bodyType = RigidbodyType2D.Dynamic;
             tagetBall._rigidbody.velocity = _shootPow * tagetBall.transform.up;
@@ -98,7 +98,6 @@ public class PadScript : MonoBehaviour
         }
         else if (inputkey.isPressed == true)
         {
-            GameManager.I._isGaming = true;
             _isReady = true;
         }
     }

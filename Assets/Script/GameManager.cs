@@ -18,15 +18,13 @@ public class GameManager : MonoBehaviour
     private int maxScore;
     #endregion
 
-    [SerializeField] public GameObject _ball;
-    [SerializeField] public PadScript _paddle;
+    public GameObject _ball;
+    public PadScript _paddle;
     public SpriteRenderer paddleImage;
 
-    private Vector2 _respawnPos; // 리스폰 위치 = 패들pos + _respawnPos
 
     [SerializeField] private Vector2 _paddleRespawnPos;
     private Vector2 _ballRespawnPos; // 리스폰 위치 = 패들pos + _respawnPos
-
 
     private float gameTime;
     public bool _isGaming = false;
@@ -41,8 +39,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _respawnPos = new Vector2(0, 0.5f);
-        Debug.Log("Start 실행");
         score = 0;
         maxScore = 0; // 임시
         Time.timeScale = 1;
@@ -89,7 +85,7 @@ public class GameManager : MonoBehaviour
             _paddle._rigidbody.velocity = Vector2.zero;
 
             BallManager.I.MakeBall();
-            BallScript newBall = BallManager.I.lastMakeBall;
+            BallScript newBall = BallManager.I._lastMakeBall;
 
             newBall.transform.position = _ballRespawnPos;
             newBall.transform.rotation = Quaternion.identity;

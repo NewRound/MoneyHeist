@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +15,7 @@ public class BallScript : MonoBehaviour
 
     private void Start()
     {
-        if(DataManager.DMinstance.selectedballImage != null)_sprite.sprite = DataManager.DMinstance.selectedballImage;
+        if (DataManager.DMinstance.selectedballImage != null) _sprite.sprite = DataManager.DMinstance.selectedballImage;
         _dmg = DataManager.DMinstance.ballDamage;
     }
     private void FixedUpdate()
@@ -75,17 +74,16 @@ public class BallScript : MonoBehaviour
         _trailRenderer.Clear();
         _moneyBag.SetActive(false);
         gameObject.SetActive(false);
-        List<BallScript> checkList = BallManager.I.balls;
+        BallManager.I._disabledBalls.Enqueue(this);
+        List<BallScript> _checkList = BallManager.I._balls;
 
-        for (int i = 0; i < checkList.Count; i++)
+        for (int i = 0; i < _checkList.Count; i++)
         {
-            if (checkList[i].gameObject.activeSelf == true && checkList[i] != this)
+            if (_checkList[i].gameObject.activeSelf == true && _checkList[i] != this)
                 break;
 
-            if (i == checkList.Count - 1)
-            {
+            if (i == _checkList.Count - 1)
                 GameManager.I.GameStart();
-            }
         }
     }
 

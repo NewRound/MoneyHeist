@@ -6,56 +6,53 @@ public class BallManager : MonoBehaviour
 {
     public static BallManager I;
 
-    [SerializeField] GameObject ball;
-    public List<BallScript> balls = new();
-    public BallScript lastMakeBall;
+    [SerializeField] GameObject ballPrefab;
+    public List<BallScript> _balls = new();
+    public Queue<BallScript> _disabledBalls = new();
+    public BallScript _lastMakeBall;
 
     private void Awake()
     {
         I = this;
     }
 
-
     // 볼 딱 만들기
     public void MakeBall()
     {
-        for (int i = 0; i < balls.Count; i++)
+        if (_disabledBalls.Count != 0)
         {
-            if (balls[i].gameObject.activeSelf == false)
-            {
-                lastMakeBall = balls[i];
-                balls[i].gameObject.SetActive(true);
-                return;
-            }
+            _lastMakeBall = _disabledBalls.Dequeue();
+            _lastMakeBall.gameObject.SetActive(true);
+            return;
         }
 
-        lastMakeBall = Instantiate(ball).GetComponentInChildren<BallScript>();
-        lastMakeBall.name = "Ball";
-        balls.Add(lastMakeBall);
+        _lastMakeBall = Instantiate(ballPrefab).GetComponent<BallScript>();
+        _lastMakeBall.name = "Ball";
+        _balls.Add(_lastMakeBall);
     }
 
     // 공 분할
     public void DivideBall()
     {
         MakeBall();
-        float maxPosY = -10;
-        int ballIndex = 0;
-        for (int i = 0; i < balls.Count; i++)
+        float _maxPosY = -10;
+        int _ballIndex = 0;
+        for (int i = 0; i < _balls.Count; i++)
         {
-            if (balls[i].transform.position.y > maxPosY && balls[i] != lastMakeBall && balls[i].gameObject.activeSelf ==true )
+            if (_balls[i].transform.position.y > _maxPosY && _balls[i] != _lastMakeBall && _balls[i].gameObject.activeSelf == true)
             {
-                maxPosY = balls[i].transform.position.y;
-                ballIndex = i;
+                _maxPosY = _balls[i].transform.position.y;
+                _ballIndex = i;
                 continue;
             }
         }
 
-        lastMakeBall.transform.position = balls[ballIndex].transform.position;
-        lastMakeBall._ballShottingPow = balls[ballIndex]._ballShottingPow;
-        Vector3 oldVelocity = balls[ballIndex]._rigidbody.velocity;
-        Vector3 newVelocity = new Vector3 (oldVelocity.x * -1, oldVelocity.y, 0).normalized;
-        lastMakeBall._rigidbody.bodyType = RigidbodyType2D.Dynamic;
-        lastMakeBall._rigidbody.velocity = newVelocity * lastMakeBall._ballShottingPow;
+        _lastMakeBall.transform.position = _balls[_ballIndex].transform.position;
+        _lastMakeBall._ballShottingPow = _balls[_ballIndex]._ballShottingPow;
+        Vector3 _oldVelocity = _balls[_ballIndex]._rigidbody.velocity;
+        Vector3 _newVelocity = new Vector3(_oldVelocity.x * -1, _oldVelocity.y, 0).normalized;
+        _lastMakeBall._rigidbody.bodyType = RigidbodyType2D.Dynamic;
+        _lastMakeBall._rigidbody.velocity = _newVelocity * _lastMakeBall._ballShottingPow;
     }
 
     // 진규님이 말씀하신 콜라이더 커지는 부분입니다.
