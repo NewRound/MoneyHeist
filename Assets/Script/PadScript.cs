@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -56,8 +57,11 @@ public class PadScript : MonoBehaviour
         _rigidbody.velocity = _paddleSpeed * Time.deltaTime * value;
 
 
-        _spriteRenderer.flipX = value.x < 0;
-        
+        if (value.x > 0)
+            _spriteRenderer.flipX = true;
+        else if (value.x < 0)
+            _spriteRenderer.flipX = false;
+
         if (transform.position.x < -2.4f + _paddleSize && value.x < 0)
         {
             _rigidbody.velocity = Vector3.zero;
