@@ -205,4 +205,11 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+
+    public void EndGame()
+    {
+        // 종료화면. (UI 활성화)
+        // 다시하기. (씬 로드 활용)
+        // 시작화면.
+    }
 }
