@@ -6,6 +6,7 @@ using UnityEngine;
 public class BallScript : MonoBehaviour
 {
     public Rigidbody2D _rigidbody;
+    public CircleCollider2D _circleCollider;
     public SpriteRenderer _sprite;
     public TrailRenderer _trailRenderer;
     public GameObject _moneyBag;
@@ -63,6 +64,14 @@ public class BallScript : MonoBehaviour
         Vector2 currentDir = _rigidbody.velocity.normalized;
         Vector2 NextDir = new Vector2(currentDir.x + rangeX, currentDir.y + rangeY);
         _rigidbody.velocity = NextDir.normalized * _ballShottingPow;
+    }
+
+    private void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "Item")
+        {
+            // 여기서 어떤 아이템을 먹었는지 처리
+        }
     }
 
 }

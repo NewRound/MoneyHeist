@@ -34,6 +34,7 @@ public class BallManager : MonoBehaviour
         balls.Add(lastMakeBall);
     }
 
+    // 공 분할
     public void DivideBall()
     {
         MakeBall();
@@ -59,6 +60,12 @@ public class BallManager : MonoBehaviour
         lastMakeBall._rigidbody.velocity = newVelocity * lastMakeBall._ballShottingPow;
     }
 
+    // 진규님이 말씀하신 콜라이더 커지는 부분입니다.
+    // 기본은 0.14f
+    public void ExpandCollider(BallScript ball)
+    {
+        ball._circleCollider.radius = 0.21f;
+    }
 
 
 }
