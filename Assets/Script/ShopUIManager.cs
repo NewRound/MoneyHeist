@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using UnityEngine.TextCore.Text;
+using System.Reflection;
 
 public class ShopUIManager : MonoBehaviour
 {
@@ -80,31 +81,64 @@ public class ShopUIManager : MonoBehaviour
     public void next()
     {
         parentTransform.SetActive(true);
-        StartCoroutine(ChangeList());
+        StartCoroutine(ChangeList(true));
         
     }
 
     public void prev()
     {
         parentTransform.SetActive(true);
-        StartCoroutine(ChangeList());
+        StartCoroutine(ChangeList(false));
     }
-    IEnumerator ChangeList()
+    IEnumerator ChangeList(bool isNext)
     {
         // 애니메이션 재생 중 대기
         yield return new WaitForSeconds(0.4f);
-        if (background[0].activeSelf)
+        // 현재 활성화된 background
+        GameObject activeBackground = null;
+        for (int i = 0; i < background.Length; i++)
         {
-            labelTxt.text = "패들 스킨";
-            background[0].SetActive(false);
-            background[1].SetActive(true);
+            if (background[i].activeSelf)
+            {
+                activeBackground = background[i];
+                break;
+            }
         }
-        else if (background[1].activeSelf)
+
+        if (activeBackground != null)
         {
-            labelTxt.text = "공 스킨";
-            background[0].SetActive(true);
-            background[1].SetActive(false);
-        }      
+            // 현재 활성화된 background를 비활성화
+            activeBackground.SetActive(false);
+
+            // 다음 인덱스를 계산
+            int currentIndex = Array.IndexOf(background, activeBackground);
+            int index = 0;
+            if (isNext)
+            {
+                index = (currentIndex + 1) % background.Length;
+            }
+            else
+            {
+                index = (currentIndex - 1 + background.Length) % background.Length;
+            }
+
+            // 다음 background를 활성화
+            background[index].SetActive(true);
+
+            // labelTxt를 업데이트
+            if (index == 0)
+            {
+                labelTxt.text = "공 스킨";
+            }
+            else if (index == 1)
+            {
+                labelTxt.text = "패들 스킨";
+            }
+            else if (index == 2)
+            {
+                labelTxt.text = "능력치";
+            }
+        }
     }
 }
 

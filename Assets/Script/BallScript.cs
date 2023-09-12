@@ -12,11 +12,12 @@ public class BallScript : MonoBehaviour
     public GameObject _moneyBag;
 
     public float _ballShottingPow;
-    public float _dmg = 1;
+    public float _dmg;
 
     private void Start()
     {
         if(DataManager.DMinstance.selectedballImage != null)_sprite.sprite = DataManager.DMinstance.selectedballImage;
+        _dmg = DataManager.DMinstance.ballDamage;
     }
     private void FixedUpdate()
     {

@@ -8,11 +8,10 @@ public class BuyItem : MonoBehaviour
     public Image buttonImage;
     public Image itemImage;
     public GameObject checkImage;
-    public bool isItemDark = false;
     public static BuyItem[] selectedItem = new BuyItem[2];
-
     public ItemType itemType; // 아이템 종류
 
+    bool isItemDark = false;
     public void clickBtn()
     {
         // 현재 아이템이 볼 아이템인 경우
@@ -28,7 +27,7 @@ public class BuyItem : MonoBehaviour
             DataManager.DMinstance.selectedPaddleImage = selectedItem[1].itemImage.sprite;
         }
     }
-    public void selectItem(int num)
+    private void selectItem(int num)
     {
         if (selectedItem[num] != null && selectedItem[num] != this)
         {

@@ -6958,6 +6958,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43039b679e80df43ab9d48dac3af37b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paddleSpeed: 0
+  ballDamage: 0
+  ballSpeed: 0
+  selectedPaddleImage: {fileID: 0}
+  selectedballImage: {fileID: 0}
 --- !u!1 &1966035396
 GameObject:
   m_ObjectHideFlags: 0
