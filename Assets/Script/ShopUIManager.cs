@@ -43,7 +43,7 @@ public class ShopUIManager : MonoBehaviour
 
     private void createItem(ShopUIData ItemData, int i, Transform pos, ItemType itemType)
     {
-        float posY = 600 - ((i / 2) * 600);
+        float posY = 700 - ((i / 2) * 600);
         float posX = ((i % 2) * 500) - 250;
         // 이미지 UI 요소 생성
         Image imageUI = Instantiate(imagePrefab, pos);
