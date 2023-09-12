@@ -17,6 +17,10 @@ public class ShopUIManager : MonoBehaviour
 
     private Animator anim;
 
+    private void Awake()
+    {
+        Time.timeScale = 1.0f;
+    }
     private void Start()
     {
         int ballIndex = 0;
