@@ -33,7 +33,7 @@ public class Block : MonoBehaviour
             {
                 hp--;
             }
-            else
+            else        
             {
                 //hp == 0
 

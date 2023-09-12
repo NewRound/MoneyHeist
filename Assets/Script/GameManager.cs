@@ -22,13 +22,6 @@ public class GameManager : MonoBehaviour
 
     private Vector2 _respawnPos; // 리스폰 위치 = 패들pos + _respawnPos
 
-    private GameObject[] blockArr = new GameObject[5];
-    [SerializeField] GameObject won0;
-    [SerializeField] GameObject won1;
-    [SerializeField] GameObject won2;
-    [SerializeField] GameObject won3;
-    [SerializeField] GameObject won4;
-
     [SerializeField] private Vector2 _paddleRespawnPos;
     private Vector2 _ballRespawnPos; // 리스폰 위치 = 패들pos + _respawnPos
 
@@ -53,22 +46,13 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
 
-
-        //blockArr[0] = won0;
-        //blockArr[1] = won1;
-        //blockArr[2] = won2;
-        //blockArr[3] = won3;
-        //blockArr[4] = won4;
-        //SetBlock(PlayerPrefs.GetInt("Level"));
+        _respawnPos = new Vector2(0, 0.5f);
 
 
         _ballRespawnPos = _paddleRespawnPos + (Vector2.up * 0.5f);
         if(DataManager.DMinstance.selectedPaddleImage != null)paddleImage.sprite = DataManager.DMinstance.selectedPaddleImage;
 
-        //SetBlock(0);
-
         GameStart();
-
     }
 
     private void Update()
