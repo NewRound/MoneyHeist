@@ -418,7 +418,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 176500870}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1657262397}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: MoveToShopScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &176500870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1980,7 +1992,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 814525166}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1657262397}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Restart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &814525166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2785,7 +2809,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1351152817}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1657262397}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: MoveToStartScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1351152817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3161,11 +3197,6 @@ MonoBehaviour:
   _ball: {fileID: 7727843369316465021, guid: 109b740a47fdb4f4883b7a9137ae5c34, type: 3}
   _paddle: {fileID: 1405744326}
   paddleImage: {fileID: 1660649830}
-  won0: {fileID: 7651520061420306795, guid: ace16bc4078a9b743b59726266f19c77, type: 3}
-  won1: {fileID: 7651520061420306795, guid: 696e4c058b09f0540a5cf9350e70dfd5, type: 3}
-  won2: {fileID: 7651520061420306795, guid: 6ce44e778c7351a42b14f52a93319cbd, type: 3}
-  won3: {fileID: 7651520061420306795, guid: 65d0816765639244ca048a098df14f47, type: 3}
-  won4: {fileID: 7651520061420306795, guid: aa834bad51e54b54f9e7a4fba8167229, type: 3}
   _paddleRespawnPos: {x: 0, y: -3.96}
   _isGaming: 0
 --- !u!114 &1657262398
@@ -3238,6 +3269,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timetxt: {fileID: 1990134332}
+  _scoretxt: {fileID: 741188260}
+  _totaltxt: {fileID: 1315032874}
+  _maxtxt: {fileID: 1871574642}
+  _lifetxt: {fileID: 1998715675}
 --- !u!1 &1660649828
 GameObject:
   m_ObjectHideFlags: 0
