@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d87bf42e48f88c5418422391be0c9ea5, type: 3}
   m_Name: ball1
   m_EditorClassIdentifier: 
-  itemType: 0
+  itemType: 2
   itemImage: {fileID: -16638714, guid: fa689f90b902c50429ba67d5926f7fe4, type: 3}
   itemName: ball1

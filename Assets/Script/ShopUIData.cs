@@ -5,7 +5,8 @@ using UnityEngine;
 public enum ItemType
 {
     Buff, // 아이템 종류: 버프
-    Skin, // 아이템 종류: 스킨
+    Paddle, // 아이템 종류: 스킨
+    Ball, // 아이템 종류: 스킨
 }
 [CreateAssetMenu(fileName = "ItemData", menuName = "ScriptableObjects/ItemData")]
 public class ShopUIData : ScriptableObject

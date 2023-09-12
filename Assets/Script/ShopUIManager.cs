@@ -18,20 +18,20 @@ public class ShopUIManager : MonoBehaviour
 
     private void Start()
     {
-        int buffIndex = 0;
-        int skinIndex = 0;
+        int ballIndex = 0;
+        int paddleIndex = 0;
 
         foreach (var item in ItemList)
         {
-            if (item.itemType == ItemType.Buff)
+            if (item.itemType == ItemType.Ball)
             {
-                createItem(item, buffIndex, background[0].transform);
-                buffIndex++;
+                createItem(item, ballIndex, background[0].transform, ItemType.Ball);
+                ballIndex++;
             }
-            else if (item.itemType == ItemType.Skin)
+            else if (item.itemType == ItemType.Paddle)
             {
-                createItem(item, skinIndex, background[1].transform);
-                skinIndex++;
+                createItem(item, paddleIndex, background[1].transform, ItemType.Paddle);
+                paddleIndex++;
             }
         }
         labelTxt.text = "공 스킨";
@@ -39,36 +39,44 @@ public class ShopUIManager : MonoBehaviour
         anim = parentTransform.GetComponent<Animator>();
     }
 
-    private void createItem(ShopUIData ItemData, int i,Transform pos)
+
+    private void createItem(ShopUIData ItemData, int i, Transform pos, ItemType itemType)
     {
-                float posY = 600 - ((i / 2) * 600);
-                float posX = ((i % 2) * 500) - 250;
-                // 이미지 UI 요소 생성
-                Image imageUI = Instantiate(imagePrefab, pos);
+        float posY = 600 - ((i / 2) * 600);
+        float posX = ((i % 2) * 500) - 250;
+        // 이미지 UI 요소 생성
+        Image imageUI = Instantiate(imagePrefab, pos);
 
-                // 이미지 위치 설정
-                RectTransform rectTransform = imageUI.GetComponent<RectTransform>();
-                rectTransform.anchoredPosition = new Vector2(posX, posY);
+        // 이미지 위치 설정
+        RectTransform rectTransform = imageUI.GetComponent<RectTransform>();
+        rectTransform.anchoredPosition = new Vector2(posX, posY);
 
-                // 아이템 데이터로 UI 업데이트 (예: 이미지 스프라이트 설정)
-                Image[] childImages = imageUI.GetComponentsInChildren<Image>(); // 자식 오브젝트에서 모든 Image 컴포넌트 가져오기
-                foreach (Image childImage in childImages)
-                {
-                    if (childImage.name == "itemImage")
-                    {
-                        childImage.sprite = ItemData.itemImage;
-                        break; // 이미지를 찾았으면 루프 종료
-                    }
-                }
+        // 아이템 데이터로 UI 업데이트 (예: 이미지 스프라이트 설정)
+        Image[] childImages = imageUI.GetComponentsInChildren<Image>(); // 자식 오브젝트에서 모든 Image 컴포넌트 가져오기
+        foreach (Image childImage in childImages)
+        {
+            if (childImage.name == "itemImage")
+            {
+                childImage.sprite = ItemData.itemImage;
+                break; // 이미지를 찾았으면 루프 종료
+            }
+        }
 
-                TMP_Text childText = imageUI.GetComponentInChildren<TMP_Text>(); // 자식 오브젝트에서 text 컴포넌트 찾기
-                if (childText != null)
-                {
-                    childText.text = ItemData.itemName; // itemName 변경
-                }
-        
+        TMP_Text childText = imageUI.GetComponentInChildren<TMP_Text>(); // 자식 오브젝트에서 text 컴포넌트 찾기
+        if (childText != null)
+        {
+            childText.text = ItemData.itemName; // itemName 변경
+        }
+
+        // 아이템의 itemType 설정
+        BuyItem buyItem = imageUI.GetComponent<BuyItem>();
+        if (buyItem != null)
+        {
+            buyItem.itemType = itemType;
+        }
+
     }
-    
+
     public void next()
     {
         parentTransform.SetActive(true);
