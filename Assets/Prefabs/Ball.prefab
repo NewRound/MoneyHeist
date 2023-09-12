@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 4864866044708184351}
+  _circleCollider: {fileID: 8098262721506227801}
   _sprite: {fileID: 3419349574372858350}
   _trailRenderer: {fileID: 1016847955916099895}
   _moneyBag: {fileID: 4985267870379797722}
