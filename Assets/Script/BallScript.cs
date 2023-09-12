@@ -1,37 +1,30 @@
 
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BallScript : MonoBehaviour
 {
-    Rigidbody2D _rigidbody;
-    SpriteRenderer _sprite;
-    GameObject _moneyBag;
-    public float _ballPow;
+    public Rigidbody2D _rigidbody;
+    public CircleCollider2D _circleCollider;
+    public SpriteRenderer _sprite;
+    public TrailRenderer _trailRenderer;
+    public GameObject _moneyBag;
+
+    public float _ballShottingPow;
+    public float _dmg = 1;
 
     private void Start()
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _sprite = transform.Find("MainSprite").GetComponent<SpriteRenderer>();
-        _moneyBag = transform.Find("MainSprite").Find("MoneyBag").gameObject;
-        Destroy(transform.Find("Line").gameObject);
+        if(DataManager.DMinstance.selectedballImage != null)_sprite.sprite = DataManager.DMinstance.selectedballImage;
     }
-
     private void FixedUpdate()
     {
-        Vector2 dir = Vector2.zero - _rigidbody.velocity.normalized;
-        float _rotZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, _rotZ + 90);
-        _sprite.flipX = Mathf.Abs(_rotZ) > 90f;
+        if (GameManager.I.IsShootBall == false)
+            return;
 
-        if (transform.position.y < -5)
-        {
-            Destroy(gameObject);
-
-            if (GameObject.FindGameObjectsWithTag("Ball").Length == 1)
-            {
-                GameManager.I.GameStart();
-            }
-        }
+        RotateSprite();
+        DeathCheck();
     }
 
     private void OnCollisionEnter2D(Collision2D coll)
@@ -54,8 +47,45 @@ public class BallScript : MonoBehaviour
 
         Vector2 currentDir = _rigidbody.velocity.normalized;
         Vector2 NextDir = new Vector2(currentDir.x + rangeX, currentDir.y + rangeY);
-        _rigidbody.velocity = NextDir.normalized * _ballPow;
-        Debug.Log(_rigidbody.velocity.magnitude);
+        _rigidbody.velocity = NextDir.normalized * _ballShottingPow;
+    }
+
+    private void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "Item")
+        {
+            // 여기서 어떤 아이템을 먹었는지 처리
+        }
+    }
+
+    private void RotateSprite()
+    {
+        Vector2 dir = Vector2.zero - _rigidbody.velocity.normalized;
+        float _rotZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, _rotZ + 90);
+        _sprite.flipX = Mathf.Abs(_rotZ) > 90f;
+    }
+
+    private void DeathCheck()
+    {
+        if (transform.position.y > -10)
+            return;
+
+        _trailRenderer.Clear();
+        _moneyBag.SetActive(false);
+        gameObject.SetActive(false);
+        List<BallScript> checkList = BallManager.I.balls;
+
+        for (int i = 0; i < checkList.Count; i++)
+        {
+            if (checkList[i].gameObject.activeSelf == true && checkList[i] != this)
+                break;
+
+            if (i == checkList.Count - 1)
+            {
+                GameManager.I.GameStart();
+            }
+        }
     }
 
 }

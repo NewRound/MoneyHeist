@@ -7,12 +7,25 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager I;
-    [SerializeField] GameObject _ball;
-    [SerializeField] GameObject _Paddle;
+    [SerializeField] public GameObject _ball;
+    [SerializeField] public PadScript _paddle;
+    public SpriteRenderer paddleImage;
 
-    private Vector2 _respawnPos; // ∏ÆΩ∫∆˘ ¿ßƒ° = ∆–µÈpos + _respawnPos
-    private bool _isShootBall = false; // πﬂªÁ«œ∞Ì≥™º≠ ¥Ÿ ¡◊¿ª∂ß±Ó¡ˆ true
-    private int _life = 3; // πÎ∑±Ω∫ ºˆ¡§«œº≈µµµÀ¥œ¥Ÿ!
+
+    private Vector2 _respawnPos; // Î¶¨Ïä§Ìè∞ ÏúÑÏπò = Ìå®Îì§pos + _respawnPos
+
+    private GameObject[] blockArr = new GameObject[5];
+    [SerializeField] GameObject won0;
+    [SerializeField] GameObject won1;
+    [SerializeField] GameObject won2;
+    [SerializeField] GameObject won3;
+    [SerializeField] GameObject won4;
+
+    [SerializeField] private Vector2 _paddleRespawnPos;
+    private Vector2 _ballRespawnPos; // Î¶¨Ïä§Ìè∞ ÏúÑÏπò = Ìå®Îì§pos + _respawnPos
+
+    private bool _isShootBall = false; // Î∞úÏÇ¨ÌïòÍ≥†ÎÇòÏÑú Îã§ Ï£ΩÏùÑÎïåÍπåÏßÄ true
+    private int _life = 3; // Î∞∏Îü∞Ïä§ ÏàòÏ†ïÌïòÏÖîÎèÑÎê©ÎãàÎã§!
 
     public bool IsShootBall { get { return _isShootBall; } set { _isShootBall = value; } }
 
@@ -29,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+
         _respawnPos = new Vector2(0, 0.5f);
         //blockArr[0] = won0;
         //blockArr[1] = won1;
@@ -36,22 +50,38 @@ public class GameManager : MonoBehaviour
         //blockArr[3] = won3;
         //blockArr[4] = won4;
         //SetBlock(PlayerPrefs.GetInt("Level"));
+
+
+        _ballRespawnPos = _paddleRespawnPos + (Vector2.up * 0.5f);
+        if(DataManager.DMinstance.selectedPaddleImage != null)paddleImage.sprite = DataManager.DMinstance.selectedPaddleImage;
+
+        SetBlock(0);
+        GameStart();
+
     }
 
-    public void GameStart() // ∞‘¿” Ω√¿€& ¿ÁΩ√¿€
+    public void GameStart() // Í≤åÏûÑ ÏãúÏûë& Ïû¨ÏãúÏûë
     {
-        if (_life > 0)
+        if (_life >= 0)
         {
             _isShootBall = false;
             _life--;
 
-            GameObject temp = Instantiate(_ball, _Paddle.transform);
-            temp.transform.localPosition = _respawnPos;
-            temp.name = "Ball";
+
+            _paddle._Arrow.SetActive(true);
+            _paddle.transform.position = _paddleRespawnPos;
+            _paddle._rigidbody.velocity = Vector2.zero;
+
+            BallManager.I.MakeBall();
+            BallScript newBall = BallManager.I.lastMakeBall;
+
+            newBall.transform.position = _ballRespawnPos;
+            newBall.transform.rotation = Quaternion.identity;
+            newBall._rigidbody.isKinematic = true;
         }
         else
         {
-            // ø©±‚ø° ∂Û¿Ã«¡ 0¿œ ∞ÊøÏ √≥∏Æ
+            // Ïó¨Í∏∞Ïóê ÎùºÏù¥ÌîÑ 0Ïùº Í≤ΩÏö∞ Ï≤òÎ¶¨
         }
     }
 }

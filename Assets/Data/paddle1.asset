@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d87bf42e48f88c5418422391be0c9ea5, type: 3}
-  m_Name: Item1 2
+  m_Name: paddle1
   m_EditorClassIdentifier: 
   itemType: 1
-  itemImage: {fileID: 21300000, guid: 92a1c62a68e2d69468d8f56e3e93f18a, type: 3}
-  itemName: Ice Paddle
+  itemImage: {fileID: 998003172, guid: 11e23fbe55bab7a43addcdb9dd96184f, type: 3}
+  itemName: Bus

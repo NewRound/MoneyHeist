@@ -16,18 +16,8 @@ public class StartSceneManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void ChoiceLevel()
+    public void StartGame()
     {
-        string name = EventSystem.current.currentSelectedGameObject.name;
-        int level = name[6] - '0';
-
-
-        Debug.Log($"{level}");
-        Debug.Log($"{name}");
-
-        // 테스트용
-        PlayerPrefs.SetInt("Level", level);
-
         SceneManager.LoadScene("MainScene");
 
     }
