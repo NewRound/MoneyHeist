@@ -279,9 +279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cca829021e62ac48938447e96f8f79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 0}
-  _sprite: {fileID: 0}
-  _moneyBag: {fileID: 0}
+  _rigidbody: {fileID: 4864866044708184351}
+  _sprite: {fileID: 3419349574372858350}
+  _moneyBag: {fileID: 4985267870379797722}
   _ballPow: 5
   _line: {fileID: 7979779159244887630}
 --- !u!1 &7979779159244887630

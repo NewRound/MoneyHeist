@@ -7,15 +7,8 @@ public class BallScript : MonoBehaviour
     public Rigidbody2D _rigidbody;
     public SpriteRenderer _sprite;
     public GameObject _moneyBag;
-    public float _ballPow;
     public GameObject _line;
-
-    private void Awake()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _sprite = transform.Find("MainSprite").GetComponent<SpriteRenderer>();
-        _moneyBag = transform.Find("MainSprite").Find("MoneyBag").gameObject;
-    }
+    public float _ballPow;
 
     private void FixedUpdate()
     {

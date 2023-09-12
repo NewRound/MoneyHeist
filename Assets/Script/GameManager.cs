@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _paddleRespawnPos = _paddle.gameObject.transform.position;
+        _paddleRespawnPos = _paddle.transform.position;
         _ballRespawnPos = _paddleRespawnPos + (Vector2.up * 0.5f);
 
         blockArr[0] = won0;
