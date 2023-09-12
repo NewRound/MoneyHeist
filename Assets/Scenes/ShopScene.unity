@@ -3734,6 +3734,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cc351d097f27e4a47b99466ccb8affda, type: 2}
   - {fileID: 11400000, guid: 2eb02f65fbb07f54baadbb4dc12244d1, type: 2}
   - {fileID: 11400000, guid: 6d5e2938213ea164e8574cef20515696, type: 2}
+  - {fileID: 11400000, guid: 45146e6081aa684479952b2d0eca1653, type: 2}
+  - {fileID: 11400000, guid: 183b4a0e1110888488902e25ef0ba658, type: 2}
   imagePrefab: {fileID: 48849544943154948, guid: 94ebd17b2fc17514d835e2ee471d2337, type: 3}
   background:
   - {fileID: 727486591}

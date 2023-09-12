@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ball2
   m_EditorClassIdentifier: 
   itemType: 2
-  itemImage: {fileID: 939287475, guid: fa689f90b902c50429ba67d5926f7fe4, type: 3}
-  itemName: ball2
+  itemImage: {fileID: -64400588, guid: 030aba84dd0994249a122b70ab4a273a, type: 3}
+  itemName: "\uC774\uD558\uD0DD"
