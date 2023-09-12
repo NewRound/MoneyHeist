@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class PadScript : MonoBehaviour
 {
-    [SerializeField] LineRenderer _lineRenderer;
     public BallScript tagetBall;
     public Rigidbody2D _rigidbody;
 
