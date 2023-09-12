@@ -6,6 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class StartSceneManager : MonoBehaviour
 {
+    [SerializeField] GameObject startCanvas;
+    [SerializeField] GameObject levelCanvas;
+    [SerializeField] GameObject setCanvas;
+
+    private void Awake()
+    {
+        startCanvas.SetActive(true);
+        levelCanvas.SetActive(false);
+        setCanvas.SetActive(false);
+    }
+
     public void ShopOpen()
     {
         SceneManager.LoadScene("ShopScene");

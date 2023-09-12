@@ -1367,6 +1367,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f8e7b4f895289f4c96de6418974f8b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startCanvas: {fileID: 2016096809}
+  levelCanvas: {fileID: 2064931997}
+  setCanvas: {fileID: 1478822722}
 --- !u!4 &204259679
 Transform:
   m_ObjectHideFlags: 0
@@ -6958,6 +6961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43039b679e80df43ab9d48dac3af37b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 0
   paddleSpeed: 0
   ballDamage: 0
   ballSpeed: 0

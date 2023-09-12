@@ -10,12 +10,14 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager I;
-    #region
+
+    #region UI
     [SerializeField] GameObject EndGameUI;
 
     private int score;
     private int maxScore;
     #endregion
+
     [SerializeField] public GameObject _ball;
     [SerializeField] public PadScript _paddle;
     public SpriteRenderer paddleImage;
