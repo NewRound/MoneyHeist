@@ -29,11 +29,9 @@ public class Block : MonoBehaviour
     {
         if(coll.gameObject.tag == "Ball")
         {
-            if(hp > 1)
-            {
-                hp--;
-            }
-            else if(hp <= 1)
+            hp -= DataManager.DMinstance.ballDamage;
+
+            if(hp <= 1)
             {
                 hp = 0;
 
