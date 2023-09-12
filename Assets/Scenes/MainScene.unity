@@ -2922,6 +2922,7 @@ MonoBehaviour:
   _Arrow: {fileID: 1688909156}
   _rigidbody: {fileID: 0}
   _boxCollider: {fileID: 1405744325}
+  _spriteRenderer: {fileID: 1660649830}
   _shootPow: 5
   _paddleSpeed: 150
   _rotateSpd: 100
@@ -3166,6 +3167,7 @@ MonoBehaviour:
   won3: {fileID: 7651520061420306795, guid: 65d0816765639244ca048a098df14f47, type: 3}
   won4: {fileID: 7651520061420306795, guid: aa834bad51e54b54f9e7a4fba8167229, type: 3}
   _paddleRespawnPos: {x: 0, y: -3.96}
+  _isGaming: 0
 --- !u!114 &1657262398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3309,7 +3311,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 787ebdc26fbc1644a9682e17d2da7a13, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ce3a1a3c5595c724bb8599bdf50081f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
