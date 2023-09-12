@@ -12,7 +12,7 @@ public class BallScript : MonoBehaviour
     public GameObject _moneyBag;
 
     public float _ballShottingPow;
-    public float _dmg;
+    public int _dmg;
 
     private void Start()
     {
