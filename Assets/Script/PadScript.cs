@@ -11,11 +11,12 @@ public class PadScript : MonoBehaviour
     public GameObject _Arrow;
     public Rigidbody2D _rigidbody;
     public BoxCollider2D _boxCollider;
+    public DataManager _dm = DataManager.DMinstance;
     public SpriteRenderer _spriteRenderer;
 
     private Vector2 _direction;
-    public float _shootPow = 5;
-    [SerializeField] float _paddleSpeed = 150;
+    public float _shootPow;
+    [SerializeField] float _paddleSpeed;
     [SerializeField] float _rotateSpd = 100;
 
     bool _isReady = false;
@@ -27,13 +28,16 @@ public class PadScript : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _paddleSize = _boxCollider.size.x * 0.5f;
+       
     }
 
     private void Start()
     {
         GameManager.I._paddle = this;
         InputKeyManager.I.OnMoveEventHandller += InputDirectionKey;
-        InputKeyManager.I.OnShootEventHandller += ShootBall;
+        InputKeyManager.I.OnShootEventHandller += ShootBall; 
+        _shootPow = _dm.ballSpeed;
+        _paddleSpeed = _dm.paddleSpeed;
     }
 
     private void FixedUpdate()
@@ -72,7 +76,7 @@ public class PadScript : MonoBehaviour
         }
     }
 
-    // Ω∏ ¿‘∑¬∞˙ πﬂªÁ
+    // Ïäõ ÏûÖÎ†•Í≥º Î∞úÏÇ¨
     private void ShootBall(InputValue inputkey)
     {
         if (GameManager.I.IsShootBall)
@@ -99,7 +103,7 @@ public class PadScript : MonoBehaviour
         }
     }
 
-    // πﬂªÁ ∞¢µµ º≥¡§
+    // Î∞úÏÇ¨ Í∞ÅÎèÑ ÏÑ§Ï†ï
     private void SettingBall()
     {
         if (_isReady == true && GameManager.I.IsShootBall == false)

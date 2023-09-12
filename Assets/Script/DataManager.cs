@@ -8,9 +8,9 @@ public class DataManager : MonoBehaviour
     public static DataManager DMinstance;
 
     int level;
-    int lenght;
-    int ballCount;
-    int ballSpeed;
+    public float paddleSpeed;
+    public int ballDamage;
+    public float ballSpeed;
 
     public Sprite selectedPaddleImage;
     public Sprite selectedballImage;
@@ -23,14 +23,15 @@ public class DataManager : MonoBehaviour
             DMinstance = this;
             DontDestroyOnLoad( DMinstance );
         }
+
     }
 
     private void Start()
     {
         level = 0;
-        lenght = 0;
-        ballCount = 1;
-        ballSpeed = 0;
+        paddleSpeed = 150;
+        ballDamage = 1;
+        ballSpeed = 5;
     }
 
     public void SelectLevel()
