@@ -18,11 +18,16 @@ public class DataManager : MonoBehaviour
 
     private void Awake()
     {
-        if( DMinstance == null )
-        {
+        // SoundManager 인스턴스가 이미 있는지 확인, 이 상태로 설정
+        if (DMinstance == null)
             DMinstance = this;
-            DontDestroyOnLoad( DMinstance );
-        }
+
+        // 인스턴스가 이미 있는 경우 오브젝트 제거
+        else if (DMinstance != this)
+            Destroy(gameObject);
+
+        // 이렇게 하면 다음 scene으로 넘어가도 오브젝트가 사라지지 않습니다.
+        DontDestroyOnLoad(gameObject);
 
     }
 
@@ -33,12 +38,4 @@ public class DataManager : MonoBehaviour
         ballDamage = 1;
         ballSpeed = 5;
     }
-
-    public void SelectLevel()
-    {
-        string buttenName = EventSystem.current.currentSelectedGameObject.name;
-        level = buttenName[6] - '0';
-        Debug.Log($" {level} ");
-    }
-
 }
