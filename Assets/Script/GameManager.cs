@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager I;
+    [SerializeField] GameObject EndGameUI;
     [SerializeField] public GameObject _ball;
     [SerializeField] public PadScript _paddle;
     public SpriteRenderer paddleImage;
@@ -73,6 +75,7 @@ public class GameManager : MonoBehaviour
         else
         {
             // 여기에 라이프 0일 경우 처리
+            EndGame();
         }
     }
     //고칠점...
@@ -212,8 +215,29 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        // 종료화면. (UI 활성화)
-        // 다시하기. (씬 로드 활용)
-        // 시작화면.
+        // 시간 멈춤
+
+        // 종료 UI 부르기.
+        EndGameUI.SetActive(true);
+
+        // 점수 계산해서 넣어주기.
+    }
+
+    // 다시하기 (씬 로드)
+    public void Restart()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
+
+    // 상점으로 이동
+    public void MoveToShopScene()
+    {
+        SceneManager.LoadScene("ShopScene");
+    }
+
+    // 시작 씬으로 이동
+    public void MoveToStartScene()
+    {
+        SceneManager.LoadScene("StartScene");
     }
 }
