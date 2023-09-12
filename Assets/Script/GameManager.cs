@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         _ballRespawnPos = _paddleRespawnPos + (Vector2.up * 0.5f);
         if(DataManager.DMinstance.selectedPaddleImage != null)paddleImage.sprite = DataManager.DMinstance.selectedPaddleImage;
 
-        SetBlock(0);
+        //SetBlock(0);
         GameStart();
 
     }
