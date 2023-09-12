@@ -8,27 +8,26 @@ public class PlusAbility : MonoBehaviour
     public TMP_Text ballDamage;
     public TMP_Text ballSpeed;
     public TMP_Text paddleSpeed;
-    DataManager dm = DataManager.DMinstance;
     void Start()
     {
-        ballDamage.text = dm.ballDamage.ToString();
-        ballSpeed.text = dm.ballSpeed.ToString();
-        paddleSpeed.text = dm.paddleSpeed.ToString();
+        ballDamage.text = DataManager.DMinstance.ballDamage.ToString();
+        ballSpeed.text = DataManager.DMinstance.ballSpeed.ToString();
+        paddleSpeed.text = DataManager.DMinstance.paddleSpeed.ToString();
     }
 
     public void ballDamageBtn()
     {
-        dm.ballDamage += 1;
-        ballDamage.text = dm.ballDamage.ToString();
+        DataManager.DMinstance.ballDamage += 1;
+        ballDamage.text = DataManager.DMinstance.ballDamage.ToString();
     }
     public void ballSpeedBtn()
     {
-        dm.ballSpeed += 0.5f;
-        ballSpeed.text = dm.ballSpeed.ToString();
+        DataManager.DMinstance.ballSpeed += 0.5f;
+        ballSpeed.text = DataManager.DMinstance.ballSpeed.ToString();
     }
     public void paddleSpeedBtn()
     {
-        dm.paddleSpeed += 0.5f;
-        paddleSpeed.text = dm.paddleSpeed.ToString();
+        DataManager.DMinstance.paddleSpeed += 0.5f;
+        paddleSpeed.text = DataManager.DMinstance.paddleSpeed.ToString();
     }
 }
