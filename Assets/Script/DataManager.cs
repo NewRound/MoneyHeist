@@ -38,6 +38,7 @@ public class DataManager : MonoBehaviour
     {
         string buttenName = EventSystem.current.currentSelectedGameObject.name;
         level = buttenName[6] - '0';
+        Debug.Log($" {level} ");
     }
 
 }
