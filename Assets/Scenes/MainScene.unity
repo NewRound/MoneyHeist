@@ -3121,6 +3121,7 @@ GameObject:
   - component: {fileID: 1657262398}
   - component: {fileID: 1657262399}
   - component: {fileID: 1657262400}
+  - component: {fileID: 1657262401}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3222,6 +3223,19 @@ MonoBehaviour:
   ball: {fileID: 7727843369316465021, guid: 109b740a47fdb4f4883b7a9137ae5c34, type: 3}
   balls: []
   lastMakeBall: {fileID: 0}
+--- !u!114 &1657262401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657262395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23b57b36b7018314e8ea62ec4719e4bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timetxt: {fileID: 1990134332}
 --- !u!1 &1660649828
 GameObject:
   m_ObjectHideFlags: 0
