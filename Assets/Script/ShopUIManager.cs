@@ -34,15 +34,15 @@ public class ShopUIManager : MonoBehaviour
                 skinIndex++;
             }
         }
-        labelTxt.text = "버프 아이템";
+        labelTxt.text = "공 스킨";
 
         anim = parentTransform.GetComponent<Animator>();
     }
 
     private void createItem(ShopUIData ItemData, int i,Transform pos)
     {
-                float posY = +750 - ((i / 3) * 500);
-                float posX = ((i % 3) * 350) - 350;
+                float posY = 600 - ((i / 2) * 600);
+                float posX = ((i % 2) * 500) - 250;
                 // 이미지 UI 요소 생성
                 Image imageUI = Instantiate(imagePrefab, pos);
 
@@ -87,13 +87,13 @@ public class ShopUIManager : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         if (background[0].activeSelf)
         {
-            labelTxt.text = "스킨 아이템";
+            labelTxt.text = "패들 스킨";
             background[0].SetActive(false);
             background[1].SetActive(true);
         }
         else if (background[1].activeSelf)
         {
-            labelTxt.text = "버프 아이템";
+            labelTxt.text = "공 스킨";
             background[0].SetActive(true);
             background[1].SetActive(false);
         }      

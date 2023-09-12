@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d87bf42e48f88c5418422391be0c9ea5, type: 3}
-  m_Name: Item1 3
+  m_Name: paddle3
   m_EditorClassIdentifier: 
   itemType: 1
-  itemImage: {fileID: 21300000, guid: 1982661adadfa0d46aab089c74bfb8d1, type: 3}
-  itemName: Wood Paddle
+  itemImage: {fileID: -200613191, guid: 11e23fbe55bab7a43addcdb9dd96184f, type: 3}
+  itemName: Basic
