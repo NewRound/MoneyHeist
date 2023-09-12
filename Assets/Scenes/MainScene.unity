@@ -1068,6 +1068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ball: {fileID: 7727843369316465021, guid: 109b740a47fdb4f4883b7a9137ae5c34, type: 3}
   _paddle: {fileID: 1405744326}
+  paddleImage: {fileID: 1660649830}
   won0: {fileID: 7651520061420306795, guid: ace16bc4078a9b743b59726266f19c77, type: 3}
   won1: {fileID: 7651520061420306795, guid: 696e4c058b09f0540a5cf9350e70dfd5, type: 3}
   won2: {fileID: 7651520061420306795, guid: 6ce44e778c7351a42b14f52a93319cbd, type: 3}

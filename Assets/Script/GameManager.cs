@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager I;
     [SerializeField] public GameObject _ball;
     [SerializeField] public PadScript _paddle;
+    public SpriteRenderer paddleImage;
 
     private GameObject[] blockArr = new GameObject[5];
     [SerializeField] GameObject won0;
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
         blockArr[4] = won4;
 
         _ballRespawnPos = _paddleRespawnPos + (Vector2.up * 0.5f);
+        paddleImage.sprite = DataManager.DMinstance.selectedPaddleImage;
 
         SetBlock(0);
         GameStart();
