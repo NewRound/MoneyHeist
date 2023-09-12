@@ -56,6 +56,8 @@ public class GameManager : MonoBehaviour
             _isShootBall = false;
             _life--;
 
+
+            _paddle._Arrow.SetActive(true);
             _paddle.transform.position = _paddleRespawnPos;
             _paddle._rigidbody.velocity = Vector2.zero;
 

@@ -9,6 +9,7 @@ public class PadScript : MonoBehaviour
     public BallScript tagetBall;
     public Rigidbody2D _rigidbody;
     public BoxCollider2D _boxCollider;
+    public GameObject _Arrow;
 
     private Vector2 _direction;
     [SerializeField] float _speed = 150;
@@ -76,6 +77,9 @@ public class PadScript : MonoBehaviour
             tagetBall._rigidbody.bodyType = RigidbodyType2D.Dynamic;
             tagetBall._rigidbody.velocity = _shootPow*tagetBall.transform.up;
             tagetBall._ballShottingPow = tagetBall._rigidbody.velocity.magnitude;
+
+            _Arrow.transform.rotation = Quaternion.identity;
+            _Arrow.SetActive(false);
             return;
         }
         else if (inputkey.isPressed == true)
@@ -91,6 +95,7 @@ public class PadScript : MonoBehaviour
             if (_reverseRotation == false)
             {
                 tagetBall.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.forward);
+                _Arrow.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.forward);
                 if (tagetBall.transform.rotation.z >= 0.6)
                 {
                       _reverseRotation = true;
@@ -99,6 +104,7 @@ public class PadScript : MonoBehaviour
             else if (_reverseRotation == true)
             {
                 tagetBall.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.back);
+                _Arrow.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.back);
                 if (tagetBall.transform.rotation.z <= -0.6)
                 {
                     _reverseRotation = false;
