@@ -52,11 +52,10 @@ public class Block : MonoBehaviour
                     //Item Use
                 }
 
-                playerScore += score;
+                GameManager.I.score += score;
                 Destroy(gameObject, 1.0f);
             }
         }
     }
-
 
 }
