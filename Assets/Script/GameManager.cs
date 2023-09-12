@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject won3;
     [SerializeField] GameObject won4;
 
-    private Vector2 _paddleRespawnPos;
+    [SerializeField] private Vector2 _paddleRespawnPos;
     private Vector2 _ballRespawnPos; // 리스폰 위치 = 패들pos + _respawnPos
     private bool _isShootBall = false; // 발사하고나서 다 죽을때까지 true
     private int _life = 3; // 밸런스 수정하셔도됩니다!
@@ -37,17 +37,16 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _paddleRespawnPos = _paddle.transform.position;
-        _ballRespawnPos = _paddleRespawnPos + (Vector2.up * 0.5f);
-
         blockArr[0] = won0;
         blockArr[1] = won1;
         blockArr[2] = won2;
         blockArr[3] = won3;
         blockArr[4] = won4;
+
+        _ballRespawnPos = _paddleRespawnPos + (Vector2.up * 0.5f);
+
         SetBlock(0);
         GameStart();
-
     }
 
     public void GameStart() // 게임 시작& 재시작
