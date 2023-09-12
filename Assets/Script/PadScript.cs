@@ -11,7 +11,7 @@ public class PadScript : MonoBehaviour
     public GameObject _Arrow;
     public Rigidbody2D _rigidbody;
     public BoxCollider2D _boxCollider;
-    public DataManager _dm = DataManager.DMinstance;
+    //public DataManager _dm = DataManager.DMinstance;
     public SpriteRenderer _spriteRenderer;
 
     private Vector2 _direction;
@@ -36,8 +36,8 @@ public class PadScript : MonoBehaviour
         GameManager.I._paddle = this;
         InputKeyManager.I.OnMoveEventHandller += InputDirectionKey;
         InputKeyManager.I.OnShootEventHandller += ShootBall; 
-        _shootPow = _dm.ballSpeed;
-        _paddleSpeed = _dm.paddleSpeed;
+        _shootPow = DataManager.DMinstance.ballSpeed;
+        _paddleSpeed = DataManager.DMinstance.paddleSpeed;
     }
 
     private void FixedUpdate()

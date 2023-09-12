@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
         _life = 4;
         _isGaming = false;
         _isShootBall = false;
+        EndGameUI.SetActive(false);
 
         _ballRespawnPos = _paddleRespawnPos + (Vector2.up * 0.5f);
         if(DataManager.DMinstance.selectedPaddleImage != null)paddleImage.sprite = DataManager.DMinstance.selectedPaddleImage;

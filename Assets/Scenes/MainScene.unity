@@ -245,7 +245,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &93899035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2958,6 +2958,7 @@ MonoBehaviour:
   _Arrow: {fileID: 1688909156}
   _rigidbody: {fileID: 0}
   _boxCollider: {fileID: 1405744325}
+  _dm: {fileID: 0}
   _spriteRenderer: {fileID: 1660649830}
   _shootPow: 5
   _paddleSpeed: 150
@@ -3194,6 +3195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EndGameUI: {fileID: 93899034}
+  score: 0
   _ball: {fileID: 7727843369316465021, guid: 109b740a47fdb4f4883b7a9137ae5c34, type: 3}
   _paddle: {fileID: 1405744326}
   paddleImage: {fileID: 1660649830}
