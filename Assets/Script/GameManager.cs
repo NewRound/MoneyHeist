@@ -42,7 +42,17 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         score = 0;
-        maxScore = 0; // 임시
+        if (!PlayerPrefs.HasKey("MaxScore"))
+        {
+            maxScore = 0;
+            Debug.Log("maxScore -> Set");
+            PlayerPrefs.SetInt("MaxScore", maxScore);
+        }
+        else
+        {
+            Debug.Log("maxScore -> Load");
+            maxScore = PlayerPrefs.GetInt("MaxScore");
+        }
         Time.timeScale = 1;
         gameTime = gameLimitTime;
         _life = 4;
@@ -112,6 +122,13 @@ public class GameManager : MonoBehaviour
         // 얻은 돈 *( {남은 시간 / 시작 시간} + 최소값)
         MainUIManager.I._totaltxt.text = ((int)((score / 100) * ((gameTime / gameLimitTime) + 0.2))).ToString();
         Debug.Log($"{(int)((score / 100) * ((gameTime / gameLimitTime) + 0.2))}");
+
+        // 하이스코어 계산
+        if (maxScore < (int)((score / 100) * ((gameTime / gameLimitTime) + 0.2)))
+        {
+            maxScore = (int)((score / 100) * ((gameTime / gameLimitTime) + 0.2));
+            PlayerPrefs.SetInt("MaxScore", (int)((score / 100) * ((gameTime / gameLimitTime) + 0.2)));
+        }
         MainUIManager.I._maxtxt.text = maxScore.ToString();
     }
 
