@@ -9,6 +9,8 @@ public class DataManager : MonoBehaviour
 
     public int gold;
 
+    public GameObject Auido;
+
     public int level;
     public float paddleSpeed;
     public int ballDamage;
