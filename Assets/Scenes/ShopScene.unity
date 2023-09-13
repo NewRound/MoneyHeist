@@ -1907,6 +1907,9 @@ MonoBehaviour:
   ballDamage: {fileID: 1248960048}
   ballSpeed: {fileID: 309504144}
   paddleSpeed: {fileID: 482461855}
+  ballDamagePrice: {fileID: 2092711353}
+  ballSpeedPrice: {fileID: 633325879}
+  paddleSpeedPrice: {fileID: 338180990}
 --- !u!114 &1145667275
 MonoBehaviour:
   m_ObjectHideFlags: 0
