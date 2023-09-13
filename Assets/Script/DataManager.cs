@@ -9,7 +9,7 @@ public class DataManager : MonoBehaviour
 
     public int gold;
 
-    public GameObject Auido;
+    public float volume;
 
     public int level;
     public float paddleSpeed;
@@ -41,6 +41,7 @@ public class DataManager : MonoBehaviour
     {
         level = 0;
         gold = 0;
+        volume = 1.0f;
         paddleSpeed = 150;
         ballDamage = 1;
         ballSpeed = 5;
