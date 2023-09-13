@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Vector2 _paddleRespawnPos;
     private Vector2 _ballRespawnPos; // 리스폰 위치 = 패들pos + _respawnPos
 
-    private float gameLimitTime = 5.0f;
+    private float gameLimitTime = 60.0f;
     private float gameTime;
     public bool _isGaming = false;
     private bool _isShootBall = false; // 발사하고나서 다 죽을때까지 true

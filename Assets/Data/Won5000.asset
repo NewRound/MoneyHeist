@@ -15,5 +15,5 @@ MonoBehaviour:
   blockImage: {fileID: 21300000, guid: 76f79d0e0f7bd2c4e9cfa4ba9f7bc3a7, type: 3}
   blockName: Won5000
   hp: 2
-  dropPer: 0.01
+  dropPer: 1
   score: 5000

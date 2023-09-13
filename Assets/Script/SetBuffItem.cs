@@ -22,4 +22,11 @@ public class SetBuffItem : MonoBehaviour
             spriteRenderer.sprite = randomData.itemImage;
         }
     }
+    private void Update()
+    {
+        if (gameObject.transform.position.y < -5.0f)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

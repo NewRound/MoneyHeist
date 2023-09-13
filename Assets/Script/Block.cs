@@ -7,7 +7,8 @@ public class Block : MonoBehaviour
 {
     //변경점(스크립터블 오브젝트)
     public BlockData blockData;
-
+    [SerializeField] GameObject buffPrefab;
+    
     public int hp;
     public int score;
     public double dropPer;
@@ -34,8 +35,7 @@ public class Block : MonoBehaviour
                 bool drop = Random.Range(0.0f, 1.0f) > (1 - dropPer);
                 if (drop == true)
                 {
-                    //Call dropItem
-                    //SpawnDropItem(gameObject.transform.position);
+                    var buffItem = Instantiate(buffPrefab).GetComponent<SetBuffItem>();
                 }
 
                 GameManager.I.score += score;

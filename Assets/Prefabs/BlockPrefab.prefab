@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockData: {fileID: 0}
+  buffPrefab: {fileID: 2857139699599537433, guid: c37f2fd872890fa4f816df95ee31af11, type: 3}
   hp: 0
   score: 0
   dropPer: 0
