@@ -11,6 +11,7 @@ public class BallManager : MonoBehaviour
     public Queue<BallScript> _disabledBalls = new();
     public BallScript _lastMakeBall;
     private Vector3 originalScale; // 원래 스케일 값 저장 변수
+    private int originalATK; // 원래 스케일 값 저장 변수
     private void Awake()
     {
         I = this;
@@ -56,20 +57,45 @@ public class BallManager : MonoBehaviour
     }
 
     // 볼 크기 증가
-    public void ExpandCollider(BallScript ball, bool isWork)
+    public void ExpandCollider(bool isWork)
     {
         if (isWork)
         {
-            originalScale = ball.transform.localScale;
-            // 볼 게임 오브젝트의 스케일을 증가시킵니다.
-            Vector3 newScale = ball.transform.localScale * 1.25f;
-            ball.transform.localScale = newScale;
+            for (int i = 0; i < _balls.Count; i++)
+            {
+                    originalScale = _balls[0].transform.localScale;
+                    // 볼 게임 오브젝트의 스케일을 증가시킵니다.
+                    Vector3 newScale = _balls[i].transform.localScale * 1.25f;
+                    _balls[i].transform.localScale = newScale;
+            }
         }
         else
         {
-            ball.transform.localScale = originalScale;
+            for (int i = 0; i < _balls.Count; i++)
+            {
+                    _balls[i].transform.localScale = originalScale;
+            }
         }
     }
-
+    // 볼 공격력 증가
+    public void AtkUP(bool isWork)
+    {
+        if (isWork)
+        {
+            for (int i = 0; i < _balls.Count; i++)
+            {
+                    originalATK = _balls[0]._dmg;
+                    // 볼 게임 오브젝트의 스케일을 증가시킵니다.
+                    _balls[i]._dmg = 100;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < _balls.Count; i++)
+            {
+                    _balls[i]._dmg = originalATK;
+            }
+        }
+    }
 
 }

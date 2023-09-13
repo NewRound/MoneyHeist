@@ -70,8 +70,8 @@ public class PadScript : MonoBehaviour
     private void StopFunction()
     {
         // 기능을 비활성화합니다.
-        tagetBall._dmg -= 100;
-        BallManager.I.ExpandCollider(tagetBall, false);
+        BallManager.I.AtkUP(false);
+        BallManager.I.ExpandCollider(false);
         isFunctionActive = false;
     }
 
@@ -154,20 +154,20 @@ public class PadScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.tag == "Item" && !isFunctionActive)
+        if (coll.gameObject.tag == "Item" )
         {
             StartFunction();
             if (coll.gameObject.name == "x2")
             {
                 BallManager.I.DivideBall();
             }
-            if (coll.gameObject.name == "AtkMax")
+            if (coll.gameObject.name == "AtkMax" && !isFunctionActive)
             {
-                tagetBall._dmg += 100;
+                BallManager.I.AtkUP(true);
             }
-            if (coll.gameObject.name == "Big")
+            if (coll.gameObject.name == "Big" && !isFunctionActive)
             {
-                BallManager.I.ExpandCollider(tagetBall, true);
+                BallManager.I.ExpandCollider(true);
             }
             Destroy(coll.gameObject);
         }
