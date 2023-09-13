@@ -29,8 +29,8 @@ public class BallScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
-        float rangeX = Random.Range(-0.05f, +0.05f);
-        float rangeY = Random.Range(-0.05f, +0.05f);
+        float rangeX = Random.Range(-0.1f, +0.1f);
+        float rangeY = Random.Range(-0.1f, +0.1f);
 
         if (coll.gameObject.tag == "Paddle")
         {
