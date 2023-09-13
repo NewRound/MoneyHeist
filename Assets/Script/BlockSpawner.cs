@@ -141,6 +141,7 @@ public class BlockSpawner : MonoBehaviour
     public void SpawnBlock(int _typeNum , float _posX, float _posY, float size)
     {
         var newBlock = Instantiate(blockPrefab).GetComponent<Block>();
+        //find 대체 필요
         newBlock.transform.parent = GameObject.Find("BlockSpawner").transform;
 
         //스크립터블 오브젝트 설정값 받음.
@@ -151,4 +152,5 @@ public class BlockSpawner : MonoBehaviour
         newBlock.transform.position = new Vector2(_posX, _posY);
         newBlock.transform.localScale = new Vector2(size, size);
     }
+
 }
