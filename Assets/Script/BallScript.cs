@@ -61,7 +61,7 @@ public class BallScript : MonoBehaviour
 
     private void DeathCheck()
     {
-        if (transform.position.y > -10)
+        if (transform.position.y > -5)
             return;
 
         _trailRenderer.Clear();
