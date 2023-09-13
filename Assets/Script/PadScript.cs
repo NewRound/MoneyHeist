@@ -18,9 +18,7 @@ public class PadScript : MonoBehaviour
     public float _shootPow;
     [SerializeField] float _paddleSpeed;
     [SerializeField] float _rotateSpd = 100;
-
     bool _isReady = false;
-    bool _reverseRotation = false;
     bool isFunctionActive = false;
 
     float startTime;
@@ -37,7 +35,7 @@ public class PadScript : MonoBehaviour
     {
         GameManager.I._paddle = this;
         InputKeyManager.I.OnMoveEventHandller += InputDirectionKey;
-        InputKeyManager.I.OnShootEventHandller += ShootBall; 
+        InputKeyManager.I.OnShootEventHandller += ShootBall;
         _shootPow = DataManager.DMinstance.ballSpeed;
         _paddleSpeed = DataManager.DMinstance.paddleSpeed;
     }
@@ -130,33 +128,42 @@ public class PadScript : MonoBehaviour
     // 발사 각도 설정
     private void SettingBall()
     {
+        //if (_isReady == true && GameManager.I.IsShootBall == false)
+        //{
+        //    if (_reverseRotation == false)
+        //    {
+        //        tagetBall.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.forward);
+        //        _Arrow.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.forward);
+        //        if (tagetBall.transform.rotation.z >= 0.6)
+        //        {
+        //            _reverseRotation = true;
+        //        }
+        //    }
+        //    else if (_reverseRotation == true)
+        //    {
+        //        tagetBall.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.back);
+        //        _Arrow.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.back);
+        //        if (tagetBall.transform.rotation.z <= -0.6)
+        //        {
+        //            _reverseRotation = false;
+        //        }
+        //    }
+        //}
         if (_isReady == true && GameManager.I.IsShootBall == false)
         {
-            if (_reverseRotation == false)
-            {
-                tagetBall.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.forward);
-                _Arrow.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.forward);
-                if (tagetBall.transform.rotation.z >= 0.6)
-                {
-                    _reverseRotation = true;
-                }
-            }
-            else if (_reverseRotation == true)
-            {
-                tagetBall.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.back);
-                _Arrow.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.back);
-                if (tagetBall.transform.rotation.z <= -0.6)
-                {
-                    _reverseRotation = false;
-                }
-            }
+            if (Mathf.Abs(tagetBall.transform.rotation.z) > 0.6)
+                _rotateSpd *= -1;
+
+            tagetBall.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.forward);
+            _Arrow.transform.Rotate(_rotateSpd * Time.deltaTime * Vector3.forward);
         }
+
     }
     private void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "Item")
         {
-            
+
             if (coll.gameObject.name == "x2")
             {
                 BallManager.I.DivideBall();
