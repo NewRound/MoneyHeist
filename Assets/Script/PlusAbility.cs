@@ -22,9 +22,9 @@ public class PlusAbility : MonoBehaviour
         ballSpeed.text = DataManager.DMinstance.ballSpeed.ToString();
         paddleSpeed.text = DataManager.DMinstance.paddleSpeed.ToString();
 
-        bDamagePrice = 100;
-        bSpeedPrice = 100;
-        pSpeedPrice = 100;
+        bDamagePrice = 500 + (100 * (DataManager.DMinstance.ballDamage-1));
+        bSpeedPrice = (int)(100 + (100 * ((DataManager.DMinstance.ballSpeed - 5)/0.5)));
+        pSpeedPrice = (int)(100 + (100 * ((DataManager.DMinstance.paddleSpeed - 150) / 0.5)));
 
         ballDamagePrice.text = bDamagePrice.ToString();
         ballSpeedPrice.text = bSpeedPrice.ToString();
