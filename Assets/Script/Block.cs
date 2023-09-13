@@ -8,7 +8,7 @@ public class Block : MonoBehaviour
     //변경점(스크립터블 오브젝트)
     public BlockData blockData;
     [SerializeField] GameObject buffPrefab;
-    
+
     public int hp;
     public int score;
     public double dropPer;
@@ -18,7 +18,6 @@ public class Block : MonoBehaviour
         hp = blockData.hp;
         score = blockData.score;
         dropPer = blockData.dropPer;
-
         gameObject.GetComponent<SpriteRenderer>().sprite = blockData.blockImage;
     }
     private void OnCollisionEnter2D(Collision2D coll)
@@ -27,7 +26,7 @@ public class Block : MonoBehaviour
         {
             hp -= DataManager.DMinstance.ballDamage;
 
-            if(hp <= 1)
+            if(hp < 1)
             {
                 hp = 0;
 
@@ -37,11 +36,34 @@ public class Block : MonoBehaviour
                 {
                     var buffItem = Instantiate(buffPrefab).GetComponent<SetBuffItem>();
                 }
-
+                
                 GameManager.I.score += score;
-                Destroy(gameObject, 1.0f);
+                OffBlock();
             }
         }
     }
-
+    private void OffBlock()
+    {
+        gameObject.SetActive(false);
+        CheckBlock();
+    }
+    private void CheckBlock()
+    {
+        int count = DataManager.DMinstance.level*10 + 19;
+        int end = 0;
+        {
+            for(int index = 0; index < count; index++)
+            {
+                bool notEnd = GameObject.Find("BlockSpawner").transform.GetChild(index).gameObject.activeSelf;
+                if (notEnd == true)
+                {
+                    end++;
+                }
+            }
+            if (end == 0)
+            {
+                GameManager.I.EndGame();
+            }
+        }
+    }
 }
