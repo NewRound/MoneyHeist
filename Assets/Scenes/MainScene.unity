@@ -552,7 +552,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 211974205}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1657262397}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Restart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &211974205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3258,7 +3270,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1254670972}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1657262397}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: MoveToStartScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1254670972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3664,7 +3688,6 @@ MonoBehaviour:
   _Arrow: {fileID: 1688909156}
   _rigidbody: {fileID: 0}
   _boxCollider: {fileID: 1405744325}
-  _dm: {fileID: 0}
   _spriteRenderer: {fileID: 1660649830}
   _shootPow: 5
   _paddleSpeed: 150
