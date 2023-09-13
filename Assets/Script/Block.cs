@@ -40,6 +40,7 @@ public class Block : MonoBehaviour
                 if (drop == true)
                 {
                     //Call dropItem
+                    //SpawnDropItem(gameObject.transform.position);
 
                     //Set ItemPos
 
