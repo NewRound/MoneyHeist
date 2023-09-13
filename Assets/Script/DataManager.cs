@@ -25,23 +25,23 @@ public class DataManager : MonoBehaviour
 
     private void Awake()
     {
-        // SoundManager ÀÎ½ºÅÏ½º°¡ ÀÌ¹Ì ÀÖ´ÂÁö È®ÀÎ, ÀÌ »óÅÂ·Î ¼³Á¤
+        // SoundManager ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ È®ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (DMinstance == null)
             DMinstance = this;
 
-        // ÀÎ½ºÅÏ½º°¡ ÀÌ¹Ì ÀÖ´Â °æ¿ì ¿ÀºêÁ§Æ® Á¦°Å
+        // ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
         else if (DMinstance != this)
             Destroy(gameObject);
 
-        // ÀÌ·¸°Ô ÇÏ¸é ´ÙÀ½ sceneÀ¸·Î ³Ñ¾î°¡µµ ¿ÀºêÁ§Æ®°¡ »ç¶óÁöÁö ¾Ê½À´Ï´Ù.
+        // ï¿½Ì·ï¿½ï¿½ï¿½ ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ sceneï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾î°¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½.
         DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
         level = 0;
-        gold = 0;
         volume = 1.0f;
+        gold = 1000;
         paddleSpeed = 150;
         ballDamage = 1;
         ballSpeed = 5;
