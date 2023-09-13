@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         score = 0;
         maxScore = 0; // 임시
         Time.timeScale = 1;
-        gameTime = 5.0f;
+        gameTime = 20.0f;
         _life = 4;
         _isGaming = false;
         _isShootBall = false;
