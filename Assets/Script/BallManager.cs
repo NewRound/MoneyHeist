@@ -9,6 +9,7 @@ public class BallManager : MonoBehaviour
     [SerializeField] GameObject ball;
     public List<BallScript> balls = new();
     public BallScript lastMakeBall;
+    private Vector3 originalScale; // 원래 스케일 값 저장 변수
 
     private void Awake()
     {
@@ -58,12 +59,19 @@ public class BallManager : MonoBehaviour
         lastMakeBall._rigidbody.velocity = newVelocity * lastMakeBall._ballShottingPow;
     }
 
-    // 진규님이 말씀하신 콜라이더 커지는 부분입니다.
-    // 기본은 0.14f
-    public void ExpandCollider(BallScript ball)
+    // 볼 크기 증가
+    public void ExpandCollider(BallScript ball, bool isWork)
     {
-        ball._circleCollider.radius = 0.21f;
+        if (isWork)
+        {
+            originalScale = ball.transform.localScale;
+            // 볼 게임 오브젝트의 스케일을 증가시킵니다.
+            Vector3 newScale = ball.transform.localScale * 1.25f;
+            ball.transform.localScale = newScale;
+        }
+        else
+        {
+            ball.transform.localScale = originalScale;
+        }
     }
-
-
 }

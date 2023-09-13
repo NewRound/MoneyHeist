@@ -3194,6 +3194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EndGameUI: {fileID: 93899034}
+  score: 0
   _ball: {fileID: 7727843369316465021, guid: 109b740a47fdb4f4883b7a9137ae5c34, type: 3}
   _paddle: {fileID: 1405744326}
   paddleImage: {fileID: 1660649830}
