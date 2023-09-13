@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6615393678245220210}
   - component: {fileID: -6502207272644534913}
   - component: {fileID: 2308365943900214206}
+  - component: {fileID: -8875410561419225186}
   m_Layer: 0
   m_Name: BlockPrefab
   m_TagString: Untagged
@@ -48,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockData: {fileID: 0}
   buffPrefab: {fileID: 2857139699599537433, guid: c37f2fd872890fa4f816df95ee31af11, type: 3}
+  anim: {fileID: 0}
   hp: 0
   score: 0
   dropPer: 0
@@ -148,3 +150,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &-8875410561419225186
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230216853597472801}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 18c5d306a4599584d9f0afc7a025e9b5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

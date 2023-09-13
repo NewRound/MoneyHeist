@@ -8,7 +8,10 @@ public class Block : MonoBehaviour
     //변경점(스크립터블 오브젝트)
     public BlockData blockData;
     [SerializeField] GameObject buffPrefab;
-    
+
+    [SerializeField]
+    private Animator anim;
+
     public int hp;
     public int score;
     public double dropPer;
@@ -26,6 +29,7 @@ public class Block : MonoBehaviour
         if(coll.gameObject.tag == "Ball")
         {
             hp -= DataManager.DMinstance.ballDamage;
+            anim.SetBool("isColl", true);
 
             if(hp < 1)
             {
