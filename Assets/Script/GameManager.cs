@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     #region UI
     [SerializeField] GameObject EndGameUI;
+    [SerializeField] GameObject PauseGameUI;
 
     public int score;
     private int maxScore;
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
         _isGaming = false;
         _isShootBall = false;
         EndGameUI.SetActive(false);
+        PauseGameUI.SetActive(false);
 
         _ballRespawnPos = _paddleRespawnPos + (Vector2.up * 0.5f);
         if(DataManager.DMinstance.selectedPaddleImage != null)paddleImage.sprite = DataManager.DMinstance.selectedPaddleImage;
@@ -114,8 +116,14 @@ public class GameManager : MonoBehaviour
     public void Pause()
     {
         Time.timeScale = 0;
-        EndGameUI.SetActive(true);
+        PauseGameUI.SetActive(true);
         // 다시 시작
+    }
+
+    public void StopPause()
+    {
+        Time.timeScale = 1;
+        PauseGameUI.SetActive(false);
     }
 
     // 다시하기 (씬 로드)
