@@ -50,13 +50,6 @@ public class BallScript : MonoBehaviour
         _rigidbody.velocity = NextDir.normalized * _ballShottingPow;
     }
 
-    private void OnTriggerEnter2D(Collider2D coll)
-    {
-        if (coll.gameObject.tag == "Item")
-        {
-            // 여기서 어떤 아이템을 먹었는지 처리
-        }
-    }
 
     private void RotateSprite()
     {
