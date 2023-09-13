@@ -65,10 +65,10 @@ public class GameManager : MonoBehaviour
             MainUIManager.I._scoretxt.text = score.ToString();
             MainUIManager.I._timetxt.text = gameTime.ToString("N2");
         }
-        else if (gameTime < 0)
+        else if (gameTime <= 0)
         {
             _life = -1;
-            // 게임 오버 처리
+            EndGame();
         }
     }
 
