@@ -42,8 +42,12 @@ public class DataManager : MonoBehaviour
         paddleSpeed = 150;
         ballDamage = 1;
         ballSpeed = 5;
+        setBaseImage();
+    }
+
+    public void setBaseImage()
+    {
         selectedPaddleImage = basePaddleImage;
         selectedballImage = baseBallImage;
-;
     }
 }
