@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BallManager : MonoBehaviour
@@ -40,12 +41,11 @@ public class BallManager : MonoBehaviour
     // 공 분할
     public void DivideBall()
     {
-        MakeBall();
-        float _maxPosY = -10;
-        int _ballIndex = 0;
+        float _maxPosY = -3;
+        int _ballIndex = -1;
         for (int i = 0; i < _balls.Count; i++)
         {
-            if (_balls[i].transform.position.y > _maxPosY && _balls[i] != _lastMakeBall && _balls[i].gameObject.activeSelf == true)
+            if (_balls[i].transform.position.y > _maxPosY && _balls[i].gameObject.activeSelf == true)
             {
                 _maxPosY = _balls[i].transform.position.y;
                 _ballIndex = i;
@@ -53,6 +53,10 @@ public class BallManager : MonoBehaviour
             }
         }
 
+        if (_ballIndex == -1)
+            return;
+
+        MakeBall();
         _lastMakeBall.transform.position = _balls[_ballIndex].transform.position;
         _lastMakeBall._ballShottingPow = _balls[_ballIndex]._ballShottingPow;
         Vector3 _oldVelocity = _balls[_ballIndex]._rigidbody.velocity;
