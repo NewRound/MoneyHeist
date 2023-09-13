@@ -7393,7 +7393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gold: 1000
-  volume: 0
+  volume: 1
   level: 0
   paddleSpeed: 0
   ballDamage: 0
