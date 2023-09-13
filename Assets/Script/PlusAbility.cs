@@ -33,7 +33,7 @@ public class PlusAbility : MonoBehaviour
 
     public void ballDamageBtn()
     {
-        if (DataManager.DMinstance.gold > bDamagePrice)
+        if (DataManager.DMinstance.gold >= bDamagePrice)
         {
             DataManager.DMinstance.ballDamage += 1;
             ballDamage.text = DataManager.DMinstance.ballDamage.ToString();
@@ -44,7 +44,7 @@ public class PlusAbility : MonoBehaviour
     }
     public void ballSpeedBtn()
     {
-        if (DataManager.DMinstance.gold > bSpeedPrice)
+        if (DataManager.DMinstance.gold >= bSpeedPrice)
         {
             DataManager.DMinstance.ballSpeed += 0.5f;
             ballSpeed.text = DataManager.DMinstance.ballSpeed.ToString();
@@ -55,13 +55,13 @@ public class PlusAbility : MonoBehaviour
     }
     public void paddleSpeedBtn()
     {
-        if (DataManager.DMinstance.gold > pSpeedPrice)
+        if (DataManager.DMinstance.gold >= pSpeedPrice)
         {
             DataManager.DMinstance.paddleSpeed += 0.5f;
             paddleSpeed.text = DataManager.DMinstance.paddleSpeed.ToString();
             DataManager.DMinstance.gold -= pSpeedPrice;
             pSpeedPrice += 100;
-            ballSpeedPrice.text = pSpeedPrice.ToString();
+            paddleSpeedPrice.text = pSpeedPrice.ToString();
         }
     }
 }

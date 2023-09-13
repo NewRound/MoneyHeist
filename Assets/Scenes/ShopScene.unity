@@ -3807,6 +3807,7 @@ MonoBehaviour:
   - {fileID: 1145667272}
   parentTransform: {fileID: 1793514372}
   labelTxt: {fileID: 486226055}
+  goldTxt: {fileID: 1812120193}
 --- !u!4 &2133357979
 Transform:
   m_ObjectHideFlags: 0

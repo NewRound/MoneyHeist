@@ -40,7 +40,7 @@ public class DataManager : MonoBehaviour
     private void Start()
     {
         level = 0;
-        gold = 0;
+        gold = 1000;
         paddleSpeed = 150;
         ballDamage = 1;
         ballSpeed = 5;
