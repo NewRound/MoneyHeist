@@ -16,7 +16,7 @@ public class BallManager : MonoBehaviour
         I = this;
     }
 
-    // ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+    // º¼ µü ¸¸µé±â
     public void MakeBall()
     {
         if (_disabledBalls.Count != 0)
@@ -31,7 +31,7 @@ public class BallManager : MonoBehaviour
         _balls.Add(_lastMakeBall);
     }
 
-    // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    // °ø ºÐÇÒ
     public void DivideBall()
     {
         MakeBall();
@@ -55,19 +55,12 @@ public class BallManager : MonoBehaviour
         _lastMakeBall._rigidbody.velocity = _newVelocity * _lastMakeBall._ballShottingPow;
     }
 
-    // ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-    public void ExpandCollider(BallScript ball, bool isWork)
+    // Áø±Ô´ÔÀÌ ¸»¾¸ÇÏ½Å ÄÝ¶óÀÌ´õ Ä¿Áö´Â ºÎºÐÀÔ´Ï´Ù.
+    // ±âº»Àº 0.14f
+    public void ExpandCollider(BallScript ball)
     {
-        if (isWork)
-        {
-            originalScale = ball.transform.localScale;
-            // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åµï¿½Ï´ï¿½.
-            Vector3 newScale = ball.transform.localScale * 1.25f;
-            ball.transform.localScale = newScale;
-        }
-        else
-        {
-            ball.transform.localScale = originalScale;
-        }
+        ball._circleCollider.radius = 0.21f;
     }
+
+
 }

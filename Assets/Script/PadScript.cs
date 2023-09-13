@@ -21,9 +21,6 @@ public class PadScript : MonoBehaviour
 
     bool _isReady = false;
     bool _reverseRotation = false;
-    bool isFunctionActive = false;
-
-    float startTime;
 
     public float _paddleSize;
 
@@ -40,17 +37,8 @@ public class PadScript : MonoBehaviour
         InputKeyManager.I.OnShootEventHandller += ShootBall; 
         _shootPow = DataManager.DMinstance.ballSpeed;
         _paddleSpeed = DataManager.DMinstance.paddleSpeed;
-
     }
-    private void Update()
-    {
-        // 기능이 활성화되어 있고 일정 시간이 경과하면 기능을 비활성화합니다.
-        if (isFunctionActive && Time.time - startTime >= 5f)
-        {
-            StopFunction();
-        }
 
-    }
     private void FixedUpdate()
     {
         if (GameManager.I.IsShootBall == true)
@@ -60,20 +48,6 @@ public class PadScript : MonoBehaviour
 
         }
         SettingBall();
-    }
-    private void StartFunction()
-    {
-        // 기능을 활성화하고 시작 시간을 기록합니다.
-        isFunctionActive = true;
-        startTime = Time.time;
-    }
-
-    private void StopFunction()
-    {
-        // 기능을 비활성화합니다.
-        tagetBall._dmg -= 100;
-        BallManager.I.ExpandCollider(tagetBall, false);
-        isFunctionActive = false;
     }
 
     private void InputDirectionKey(Vector2 value)
@@ -151,26 +125,6 @@ public class PadScript : MonoBehaviour
                     _reverseRotation = false;
                 }
             }
-        }
-    }
-    private void OnTriggerEnter2D(Collider2D coll)
-    {
-        if (coll.gameObject.tag == "Item" && !isFunctionActive)
-        {
-            StartFunction();
-            if (coll.gameObject.name == "x2")
-            {
-                BallManager.I.DivideBall();
-            }
-            if (coll.gameObject.name == "AtkMax")
-            {
-                tagetBall._dmg += 100;
-            }
-            if (coll.gameObject.name == "Big")
-            {
-                BallManager.I.ExpandCollider(tagetBall,true);
-            }
-            Destroy(coll.gameObject);
         }
     }
 }

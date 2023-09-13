@@ -7,7 +7,6 @@ TagManager:
   - Ball
   - Money
   - Paddle
-  - Item
   layers:
   - Default
   - TransparentFX
