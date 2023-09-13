@@ -16,6 +16,11 @@ public class BallManager : MonoBehaviour
     {
         I = this;
     }
+    private void Start()
+    {
+        originalScale = new Vector3(1,1,1);
+        originalATK = DataManager.DMinstance.ballDamage;
+    }
 
     // 볼 딱 만들기
     public void MakeBall()
@@ -63,8 +68,6 @@ public class BallManager : MonoBehaviour
         {
             for (int i = 0; i < _balls.Count; i++)
             {
-                    originalScale = _balls[0].transform.localScale;
-                    // 볼 게임 오브젝트의 스케일을 증가시킵니다.
                     Vector3 newScale = _balls[i].transform.localScale * 1.25f;
                     _balls[i].transform.localScale = newScale;
             }
@@ -84,7 +87,6 @@ public class BallManager : MonoBehaviour
         {
             for (int i = 0; i < _balls.Count; i++)
             {
-                    originalATK = _balls[0]._dmg;
                     // 볼 게임 오브젝트의 스케일을 증가시킵니다.
                     _balls[i]._dmg = 100;
             }
