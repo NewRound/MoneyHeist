@@ -20,11 +20,6 @@ public class Block : MonoBehaviour
 
         gameObject.GetComponent<SpriteRenderer>().sprite = blockData.blockImage;
     }
-
-    //교체할 것.
-    int playerScore = 0;
-    
-
     private void OnCollisionEnter2D(Collision2D coll)
     {
         if(coll.gameObject.tag == "Ball")
@@ -41,14 +36,6 @@ public class Block : MonoBehaviour
                 {
                     //Call dropItem
                     //SpawnDropItem(gameObject.transform.position);
-
-                    //Set ItemPos
-
-                    //Item Drop
-
-                    //Item Release
-
-                    //Item Use
                 }
 
                 GameManager.I.score += score;
