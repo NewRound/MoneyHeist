@@ -2,12 +2,15 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 
 public class Block : MonoBehaviour
 {
     //변경점(스크립터블 오브젝트)
     public BlockData blockData;
     [SerializeField] GameObject buffPrefab;
+
+    [SerializeField] Animator anim;
 
     public int hp;
     public int score;
@@ -26,8 +29,11 @@ public class Block : MonoBehaviour
         {
             hp -= DataManager.DMinstance.ballDamage;
 
+            anim.SetTrigger("isColl");
+
             if(hp < 1)
             {
+                anim.SetBool("isBreak", true);
                 hp = 0;
 
                 //드랍 아이템
@@ -36,7 +42,7 @@ public class Block : MonoBehaviour
                 {
                     var buffItem = Instantiate(buffPrefab).GetComponent<SetBuffItem>();
                 }
-                
+
                 GameManager.I.score += score;
                 OffBlock();
             }
