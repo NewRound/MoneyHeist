@@ -7,6 +7,10 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager DMinstance;
 
+    public int gold;
+
+    public GameObject Auido;
+
     public int level;
     public float paddleSpeed;
     public int ballDamage;
@@ -14,6 +18,9 @@ public class DataManager : MonoBehaviour
 
     public Sprite selectedPaddleImage;
     public Sprite selectedballImage;
+
+    [SerializeField] Sprite basePaddleImage;
+    [SerializeField] Sprite baseBallImage;
 
 
     private void Awake()
@@ -28,14 +35,21 @@ public class DataManager : MonoBehaviour
 
         // 이렇게 하면 다음 scene으로 넘어가도 오브젝트가 사라지지 않습니다.
         DontDestroyOnLoad(gameObject);
-
     }
 
     private void Start()
     {
         level = 0;
+        gold = 0;
         paddleSpeed = 150;
         ballDamage = 1;
         ballSpeed = 5;
+        setBaseImage();
+    }
+
+    public void setBaseImage()
+    {
+        selectedPaddleImage = basePaddleImage;
+        selectedballImage = baseBallImage;
     }
 }

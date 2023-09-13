@@ -11,8 +11,8 @@ public class BallManager : MonoBehaviour
     public List<BallScript> _balls = new();
     public Queue<BallScript> _disabledBalls = new();
     public BallScript _lastMakeBall;
-    private Vector3 originalScale; // ¿ø·¡ ½ºÄÉÀÏ °ª ÀúÀå º¯¼ö
-    private int originalATK; // ¿ø·¡ ½ºÄÉÀÏ °ª ÀúÀå º¯¼ö
+    private Vector3 originalScale; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private int originalATK; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     private void Awake()
     {
         I = this;
@@ -23,7 +23,7 @@ public class BallManager : MonoBehaviour
         originalATK = DataManager.DMinstance.ballDamage;
     }
 
-    // º¼ µü ¸¸µé±â
+    // ë³¼ ë”± ë§Œë“¤ê¸°
     public void MakeBall()
     {
         if (_disabledBalls.Count != 0)
@@ -38,7 +38,7 @@ public class BallManager : MonoBehaviour
         _balls.Add(_lastMakeBall);
     }
 
-    // °ø ºĞÇÒ
+    // ê³µ ë¶„í• 
     public void DivideBall()
     {
         float _maxPosY = -3;
@@ -65,7 +65,8 @@ public class BallManager : MonoBehaviour
         _lastMakeBall._rigidbody.velocity = _newVelocity * _lastMakeBall._ballShottingPow;
     }
 
-    // º¼ Å©±â Áõ°¡
+    // ì§„ê·œë‹˜ì´ ë§ì”€í•˜ì‹  ì½œë¼ì´ë” ì»¤ì§€ëŠ” ë¶€ë¶„ì…ë‹ˆë‹¤.
+    // ê¸°ë³¸ì€ 0.14f
     public void ExpandCollider(bool isWork)
     {
         if (isWork)
@@ -84,14 +85,14 @@ public class BallManager : MonoBehaviour
             }
         }
     }
-    // º¼ °ø°İ·Â Áõ°¡
+    // ï¿½ï¿½ ï¿½ï¿½ï¿½İ·ï¿½ ï¿½ï¿½ï¿½ï¿½
     public void AtkUP(bool isWork)
     {
         if (isWork)
         {
             for (int i = 0; i < _balls.Count; i++)
             {
-                    // º¼ °ÔÀÓ ¿ÀºêÁ§Æ®ÀÇ ½ºÄÉÀÏÀ» Áõ°¡½ÃÅµ´Ï´Ù.
+                    // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åµï¿½Ï´ï¿½.
                     _balls[i]._dmg = 100;
             }
         }

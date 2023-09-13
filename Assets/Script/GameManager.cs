@@ -78,9 +78,10 @@ public class GameManager : MonoBehaviour
             MainUIManager.I._scoretxt.text = score.ToString();
             MainUIManager.I._timetxt.text = gameTime.ToString("N2");
         }
-        else if (gameTime <= 0)
+        else if (gameTime <= 0 && _isGaming)
         {
             _life = -1;
+            _isGaming = false;
             EndGame();
         }
     }
@@ -120,16 +121,19 @@ public class GameManager : MonoBehaviour
 
         // 점수 계산해서 넣어주기.
         // 얻은 돈 *( {남은 시간 / 시작 시간} + 최소값)
-        MainUIManager.I._totaltxt.text = ((int)((score / 100) * ((gameTime / gameLimitTime) + 0.2))).ToString();
-        Debug.Log($"{(int)((score / 100) * ((gameTime / gameLimitTime) + 0.2))}");
+        int nowScore = (int)((score / 100) * ((gameTime / gameLimitTime) + 0.2));
+        MainUIManager.I._totaltxt.text = nowScore.ToString();
+        Debug.Log($"{nowScore}");
 
         // 하이스코어 계산
-        if (maxScore < (int)((score / 100) * ((gameTime / gameLimitTime) + 0.2)))
+        if (maxScore < nowScore)
         {
-            maxScore = (int)((score / 100) * ((gameTime / gameLimitTime) + 0.2));
-            PlayerPrefs.SetInt("MaxScore", (int)((score / 100) * ((gameTime / gameLimitTime) + 0.2)));
+            maxScore = nowScore;
+            PlayerPrefs.SetInt("MaxScore", nowScore);
         }
         MainUIManager.I._maxtxt.text = maxScore.ToString();
+
+        DataManager.DMinstance.gold += DataManager.DMinstance.level * 300;
     }
 
     // 일시정지
