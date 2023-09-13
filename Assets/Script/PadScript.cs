@@ -154,19 +154,21 @@ public class PadScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.tag == "Item" )
+        if (coll.gameObject.tag == "Item")
         {
-            StartFunction();
+            
             if (coll.gameObject.name == "x2")
             {
                 BallManager.I.DivideBall();
             }
             if (coll.gameObject.name == "AtkMax" && !isFunctionActive)
             {
+                StartFunction();
                 BallManager.I.AtkUP(true);
             }
             if (coll.gameObject.name == "Big" && !isFunctionActive)
             {
+                StartFunction();
                 BallManager.I.ExpandCollider(true);
             }
             Destroy(coll.gameObject);
