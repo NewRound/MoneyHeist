@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6615393678245220210
 MonoBehaviour:
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockData: {fileID: 0}
   buffPrefab: {fileID: 2857139699599537433, guid: c37f2fd872890fa4f816df95ee31af11, type: 3}
+  BlockSpawn: {fileID: 0}
   hp: 0
   score: 0
   dropPer: 0
