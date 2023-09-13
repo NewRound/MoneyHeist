@@ -14,6 +14,7 @@ public class ShopUIManager : MonoBehaviour
     public GameObject[] background;
     public GameObject parentTransform;
     public TMP_Text labelTxt;
+    public TMP_Text goldTxt;
 
     private Animator anim;
 
@@ -42,6 +43,10 @@ public class ShopUIManager : MonoBehaviour
         labelTxt.text = "°ø ½ºÅ²";
 
         anim = parentTransform.GetComponent<Animator>();
+    }
+    private void Update()
+    {
+        goldTxt.text = DataManager.DMinstance.gold.ToString();
     }
 
 

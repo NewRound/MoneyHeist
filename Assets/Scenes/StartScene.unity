@@ -7390,8 +7390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43039b679e80df43ab9d48dac3af37b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: 0
-  Auido: {fileID: 915234771}
+  gold: 1000
+  Auido: {fileID: 0}
   level: 0
   paddleSpeed: 0
   ballDamage: 0

@@ -41,6 +41,9 @@ public class Block : MonoBehaviour
                 if (drop == true)
                 {
                     var buffItem = Instantiate(buffPrefab).GetComponent<SetBuffItem>();
+                    float posX = gameObject.transform.position.x;
+                    float posY = gameObject.transform.position.y;
+                    buffItem.transform.position = new Vector3(posX, posY, 0);
                 }
 
                 GameManager.I.score += score;
