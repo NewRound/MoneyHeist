@@ -16,7 +16,7 @@ public class BallManager : MonoBehaviour
         I = this;
     }
 
-    // º¼ µü ¸¸µé±â
+    // ë³¼ ë”± ë§Œë“¤ê¸°
     public void MakeBall()
     {
         if (_disabledBalls.Count != 0)
@@ -31,7 +31,7 @@ public class BallManager : MonoBehaviour
         _balls.Add(_lastMakeBall);
     }
 
-    // °ø ºĞÇÒ
+    // ê³µ ë¶„í• 
     public void DivideBall()
     {
         MakeBall();
@@ -55,8 +55,8 @@ public class BallManager : MonoBehaviour
         _lastMakeBall._rigidbody.velocity = _newVelocity * _lastMakeBall._ballShottingPow;
     }
 
-    // Áø±Ô´ÔÀÌ ¸»¾¸ÇÏ½Å Äİ¶óÀÌ´õ Ä¿Áö´Â ºÎºĞÀÔ´Ï´Ù.
-    // ±âº»Àº 0.14f
+    // ì§„ê·œë‹˜ì´ ë§ì”€í•˜ì‹  ì½œë¼ì´ë” ì»¤ì§€ëŠ” ë¶€ë¶„ì…ë‹ˆë‹¤.
+    // ê¸°ë³¸ì€ 0.14f
     public void ExpandCollider(BallScript ball)
     {
         ball._circleCollider.radius = 0.21f;
