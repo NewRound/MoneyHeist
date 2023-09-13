@@ -27,7 +27,7 @@ public class Block : MonoBehaviour
         {
             hp -= DataManager.DMinstance.ballDamage;
 
-            if(hp <= 1)
+            if(hp < 1)
             {
                 hp = 0;
 
@@ -37,9 +37,17 @@ public class Block : MonoBehaviour
                 {
                     var buffItem = Instantiate(buffPrefab).GetComponent<SetBuffItem>();
                 }
-
+                
                 GameManager.I.score += score;
+                GameManager.I.blockCount--;
                 Destroy(gameObject, 1.0f);
+
+                Debug.Log(GameManager.I.blockCount);
+
+                if(GameManager.I.blockCount == 0)
+                {
+                    GameManager.I.EndGame();
+                }
             }
         }
     }

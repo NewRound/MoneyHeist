@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Vector2 _paddleRespawnPos;
     private Vector2 _ballRespawnPos; // 리스폰 위치 = 패들pos + _respawnPos
 
+    public int blockCount;
     private float gameLimitTime = 60.0f;
     private float gameTime;
     public bool _isGaming = false;
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        blockCount = (DataManager.DMinstance.level) * 10 + 20;
         score = 0;
         if (!PlayerPrefs.HasKey("MaxScore"))
         {
