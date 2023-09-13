@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4058058639823605796}
   - component: {fileID: 5694694259561250235}
+  - component: {fileID: 2453237126789576289}
   m_Layer: 0
   m_Name: Audio
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &5694694259561250235
 AudioSource:
@@ -128,3 +129,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2453237126789576289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6319823384691584509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4d34ca7bb598ed4983ecd156ee2decc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
