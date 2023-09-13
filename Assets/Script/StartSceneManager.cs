@@ -21,6 +21,9 @@ public class StartSceneManager : MonoBehaviour
         startCanvas.SetActive(true);
         levelCanvas.SetActive(false);
         setCanvas.SetActive(false);
+    }
+    private void Start()
+    {
         audioSource = audio.GetComponent<AudioSource>();
         audioSettingBar.GetComponent<Slider>().value = DataManager.DMinstance.volume;
     }
