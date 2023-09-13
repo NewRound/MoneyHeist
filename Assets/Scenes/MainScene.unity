@@ -1982,7 +1982,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &715815646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3333,7 +3333,7 @@ GameObject:
   - component: {fileID: 1315032875}
   - component: {fileID: 1315032874}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TotalScoretxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4587,7 +4587,7 @@ GameObject:
   - component: {fileID: 1871574643}
   - component: {fileID: 1871574642}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: MaxScoretxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Vector2 _paddleRespawnPos;
     private Vector2 _ballRespawnPos; // 리스폰 위치 = 패들pos + _respawnPos
 
+    private float gameLimitTime = 5.0f;
     private float gameTime;
     public bool _isGaming = false;
     private bool _isShootBall = false; // 발사하고나서 다 죽을때까지 true
@@ -43,7 +44,7 @@ public class GameManager : MonoBehaviour
         score = 0;
         maxScore = 0; // 임시
         Time.timeScale = 1;
-        gameTime = 5.0f;
+        gameTime = gameLimitTime;
         _life = 4;
         _isGaming = false;
         _isShootBall = false;
@@ -108,8 +109,10 @@ public class GameManager : MonoBehaviour
         EndGameUI.SetActive(true);
 
         // 점수 계산해서 넣어주기.
-
-
+        // 얻은 돈 *( {남은 시간 / 시작 시간} + 최소값)
+        MainUIManager.I._totaltxt.text = ((int)((score / 100) * ((gameTime / gameLimitTime) + 0.2))).ToString();
+        Debug.Log($"{(int)((score / 100) * ((gameTime / gameLimitTime) + 0.2))}");
+        MainUIManager.I._maxtxt.text = maxScore.ToString();
     }
 
     // 일시정지
