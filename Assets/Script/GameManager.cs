@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     #region UI
     [SerializeField] GameObject EndGameUI;
     [SerializeField] GameObject PauseGameUI;
+    [SerializeField] Image PauseImage;
 
     public int score;
     private int maxScore;
@@ -142,6 +143,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         PauseGameUI.SetActive(true);
+        PauseImage.sprite = DataManager.DMinstance.selectedballImage;
         // 다시 시작
     }
 
