@@ -7398,7 +7398,6 @@ MonoBehaviour:
   paddleSpeed: 0
   ballDamage: 0
   ballSpeed: 0
-  gameLimitTime: []
   selectedPaddleImage: {fileID: 0}
   selectedballImage: {fileID: 0}
   basePaddleImage: {fileID: 21300000, guid: ce3a1a3c5595c724bb8599bdf50081f4, type: 3}

@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
         _isShootBall = false;
         EndGameUI.SetActive(false);
         PauseGameUI.SetActive(false);
+        MainUIManager.I._timetxt.text = gameTime.ToString("N2");
 
         _ballRespawnPos = _paddleRespawnPos + (Vector2.up * 0.5f);
         if(DataManager.DMinstance.selectedPaddleImage != null)paddleImage.sprite = DataManager.DMinstance.selectedPaddleImage;
